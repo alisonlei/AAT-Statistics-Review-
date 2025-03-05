@@ -1,0 +1,21 @@
+
+<!--
+  
+  
+    FIRST - SET UP THE ORIGINAL PAGE THAT YOU WANT YOUR NEW PAGE TO LOOK LIKE
+        1. Code that page as usual
+        2. Choose where in that page you want this new code to go, and write:
+            {% block nameOfBlock %}{% endblock %}
+        3. You can repeat this as many times as you want, just make sure to change the nameOfBlock
+
+
+    SECOND - SET UP YOUR NEW PAGE:
+        1. At top the document, write
+            {% extends "nameOfOriginalPage.html" %}
+        2. Write the code you want to go in that 'slot' by saying...
+            {% block nameOfBlock %}
+                The code you want to be inserted into that location
+            {% endblock %}
+
+
+-->
