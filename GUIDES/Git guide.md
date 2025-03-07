@@ -1,3 +1,5 @@
+[If viewing this in Git, click the </> button above to see the below properly. The IDE messes up the embedding]
+        
 1. Download the latest version of our project, either through Git Bash cloning or by downloading the zip from the GitLab website
 
 2. Work on your code within this folder
