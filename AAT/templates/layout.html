@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Team 2</title>
+    <link rel="icon" href="../static/icons/pencil.png" alt="An icon of a pencil">
+</head>
+<body>
+
+
+<!-- NAVBAR -->
+<div id="navbar">
+    <div id="navbarContents">
+        <img id ="navbarImage" src="../static/icons/pencil.png" alt="An icon of a pencil">
+        <a href="{{url_for('testPage')}}" alt="A link to the 'Student Home' page">Student Home</a>   <!--Populate these-->
+        <div id="navlinkgap"></div>
+        <a href="{{url_for('testPage')}}" alt="A link to the 'Teacher Home' page">Teacher Home</a>   <!--Populate these-->
+    </div>
+</div>
+
+
+<!-- PAGE CONTENT -->
+<div id="pageContent">
+    <div id="pageContainers">
+        <div class="leftContainer">
+            {% block left %}
+            {% endblock %}
+        </div>
+        <div class="containerGap"></div> 
+        <div class="rightContainer">
+            {% block right %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
