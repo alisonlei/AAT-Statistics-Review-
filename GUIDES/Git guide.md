@@ -1,4 +1,4 @@
-1. Download the latest version of our project, either through Git Bash cloning or by downloading the zip
+1. Download the latest version of our project, either through Git Bash cloning or by downloading the zip from the GitLab website
 
 2. Work on your code within this folder
 
@@ -32,10 +32,9 @@
         Make sure it says ‘into master’
 
 11. On the GitLab website, check your merge wouldn’t damage the rest of the code…
-		[I can’t remember exactly what it said but something like…]
-        Click ‘Fix here’
-        View it in ‘Interactive mode’
-        View it in ‘Side by Side’ mode
+	[I can’t remember exactly what it said but something like…]
+        Click ‘Resolve conflicts’
+        View it in ‘Interactive mode’ and ‘Side by Side’ mode
         Review the differences, and click either ‘Use their code’ or ‘Use our code’
         Click ‘Merge Pull Request’
         Click ‘Confirm’
