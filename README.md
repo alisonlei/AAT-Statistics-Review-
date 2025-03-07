@@ -1,6 +1,6 @@
 ### HOW TO ADD YOUR WORK TO THIS ###
-I (Anya) did this wrong at one point and basically deleted all of our stuff :/ Luckily I'd made a backup but ://
-So I've now wrote up the steps on how to do things properly, so that we all know how to integrate the code safely.
+I (Anya) did this wrong at one point and basically deleted all of our stuff :/ Luckily I'd made a backup but :/
+I've now written up the steps on how to do this properly, so that we all know how to integrate the code safely.
 Those steps are written in >GUIDES>Git guide.md
 
 
