@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Team 2</title>
+    <link rel="icon" href="../static/icons/???.png" alt="An icon of a ???"> <!--Do we want an icon? Add to or remove depending-->
+</head>
+<body>
+
+
+<!-- NAVBAR -->
+<div id="navbar">
+    <div id="navbarContainer">
+        <img id ="navbarImage" src="../static/icons/???.png" alt="An icon of a ???">  <!--Do we want an icon? Add to or remove depending-->
+        <a href="{{url_for('???')}}" alt="A link to the ??? page">???</a>   <!--Populate these-->
+    </div>
+</div>
+
+
+<!-- PAGE CONTENT -->
+<div id="pageContent">
+    <!--PAGE CONTENT: PAGE TEXT-->
+    <div id="pageTextContainer">
+        <div class="leftContainers">
+            {% block one %}
+            {% endblock %}
+        </div>
+        <div class="rightContainers">
+            {% block two %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
