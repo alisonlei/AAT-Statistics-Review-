@@ -1,4 +1,10 @@
-### HOW TO RUN ON WINDOWS ###
+### HOW TO ADD YOUR WORK TO THIS ###
+I (Anya) did this wrong at one point and basically deleted all of our stuff :/ Luckily I'd made a backup but ://
+So I've now wrote up the steps on how to do things properly, so that we all know how to integrate the code safely.
+Those steps are written in >GUIDES>Git guide.md
+
+
+### HOW TO RUN OUR PROJECT ON WINDOWS ###
 1. If viewing this from Git: Click the </> button above to view this properly, as the IDE is changing some of the symbols
 2. Download the entire Zip file
 3. Open Command Prompt
