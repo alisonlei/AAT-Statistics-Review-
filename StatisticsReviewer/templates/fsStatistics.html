@@ -1,0 +1,71 @@
+{%extends "layout.html"%}
+
+{%block head %}
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+<link rel="stylesheet" href="{{url_for('static',filename='css/dropdown.css')}}" />
+<link rel="stylesheet" href="{{url_for('static',filename='css/fsStatistics.css')}}" />
+{% endblock%}
+
+{%block content%}
+<!--get the resource onload-->
+<div class="table_with_parameters">
+    <div class="dropdown">
+        <button class="dropbtn">Topics</button>
+        <menu class="dropdown-content">
+            {% for fa in assessment_lt %}
+            <li>{{fa[3]}}</li>
+            {% endfor %}
+        
+        </menu>
+    </div>
+    <table id="response_table" class="display">
+        <caption>Question Responses</caption>
+        <thead>
+            <tr>
+                <th>Exercise ID</th>
+                <th>Question</th>
+                <th>Incorrect Responses</th>
+                <th>Correct Responses</th>
+            </tr>
+        </thead>
+        <tbody id="response_body"></tbody>
+    </table>
+</div>
+
+
+<div class="table_with_parameters">
+    <div class="dropdown">
+        <button class="dropbtn">Assessments</button>
+        <ul class="dropdown-content">
+            {% for fa in assessment_lt %}
+            <li class="parameter" >{{fa[3]}}</li>
+            {% endfor %}
+            
+         
+        </ul>
+    </div>
+    <table id="attempt_table" class="display">
+        <caption>Students' Attempts to <span id="assessment_name"></span></caption>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Assessment name</th><!--should show attempts for that assessment-->
+                <th>Attempts</th>
+            </tr>
+        </thead>
+        <tbody id="attempt_body"></tbody>
+    </table>
+
+
+</div>
+<script src="static/js/fa.js"></script>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js" ></script><!--import jquery via CDN,online -->   
+
+
+{%endblock content%}

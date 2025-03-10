@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    width:80%;
+    margin: auto;
+}
+.table_with_parameters{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
