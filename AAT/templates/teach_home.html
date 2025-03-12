@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block left %}
+    <h1>TEACHER HOME</h1>
+    <div id="teacherHomeButtons">
+        <li> <a href="{{url_for('teacherHome')}}" alt="A button to view the questions you've created">My Questions</a></li><!--Populate this-->
+        <li> <a href="{{url_for('teacherMyAssessments')}}" alt="A button to view the assessments you've created">My Assessments</a></li>
+        <li> <a href="{{url_for('teacherHome')}}" alt="A button to view the statistics on the questions and assessments you've created">My Statistics</a></li> Populate this
+    </div>
+{% endblock %}
+
+<!-- {% block right %}
+{% endblock %} -->
