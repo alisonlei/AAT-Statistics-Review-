@@ -31,14 +31,21 @@
         Use the drop down to look at your new branch
         Check your files were successfully added
         Click ‘Create merge request’
-        Make sure it says ‘into master’
+        Underneath 'New merge request' click 'Change branches'
+        Set the source branch to the branch you just made, and the target branch to 'master'
+        Click 'Compare branches and continue'
+        Write something in the 'Title (required)' box (e.g., 'Anya merging to Master')
+        Ignore all of the options and scroll to the bottom
+        Click 'Create merge request'
 
 11. On the GitLab website, check your merge wouldn’t damage the rest of the code…
-	[I can’t remember exactly what it said but something like…]
-        Click ‘Resolve conflicts’
-        View it in ‘Interactive mode’ and ‘Side by Side’ mode
-        Review the differences, and click either ‘Use their code’ or ‘Use our code’
-        Click ‘Merge Pull Request’
-        Click ‘Confirm’
+        Open your merge request
+        If it says 'Merge blocked':
+                Click 'Resolve conflicts'
+                Make sure 'Side-by-side' and 'Interactive mode' are selected
+                Review the differences, and click either ‘Use their code’ or ‘Use our code’ (Remember there may have been changes to the code since you last downloaded it)
+                At the bottom, click 'Commit to source branch'
+        Wait until it says 'Ready to merge!'
+        Click 'Merge'
 
 12. If you want to check this didn't damage anything - download the team's code again and check it works
