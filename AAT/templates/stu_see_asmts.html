@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block left %}
+    <h1>TEACHER #'S ASSESSMENTS</h1>
+    
+    <h2>Formative Assessments</h2>
+        <div>Click on an assessment to take it. You can retake formative assessments as many times as you'd like.</div>
+        <ul id=assessmentsList>
+            <li>[Assessment name pulled from DB, filtered to just formatives]</li>
+            <li>[Assessment name pulled from DB, filtered to just formatives]</li>
+            <li>[Assessment name pulled from DB, filtered to just formatives]</li>
+            <li>[Assessment name pulled from DB, filtered to just formatives]</li>
+        </ul>
+        [Make it so any that are empty don't show - Teacher may have made less than 4]
+        <a href="{{url_for('sitFormAssessment')}}" alt="XXX">Temp link to sit a form assessment</a>
+
+    <h2>Summative Assessments</h2>
+        <div>Click on an assessment to take it. You can only take a summative assessment once.</div>
+        <ul id=assessmentsList>
+            <li>[Assessment name pulled from DB, filtered to just summatives]</li>
+            <li>[Assessment name pulled from DB, filtered to just summatives]</li>
+            <li>[Assessment name pulled from DB, filtered to just summatives]</li>
+            <li>[Assessment name pulled from DB, filtered to just summatives]</li>
+        </ul>
+{% endblock %}

@@ -5,7 +5,7 @@ Those steps are written in >GUIDES>Git guide.md
 
 
 ### HOW TO RUN OUR PROJECT ON WINDOWS ###
-1. If viewing this from Git: Click the </> button above to view this properly, as the IDE is changing some of the symbols
+1. If you're viewing this from Git: Click the 'README.md' header above, then click the '</>' button (otherwise the below text won't show properly)
 2. Download the entire Zip file
 3. Open Command Prompt
 4. Navigate into 'AAT' folder
