@@ -49,4 +49,12 @@ def sitFormAssessment():
 @app.route("/student/sum_assessment") #when we have assessmentIDs, change this to /student/sum_assessment/#
 def sitSumAssessment():
     return render_template('#') #populate
+
+@app.route("/student/form_feedback") #when we have attemptID, change this to /student/form_feedback/#
+def formFeedback():
+    return render_template('stu_f_fback.html') #populate
+
+@app.route("/student/sum_feedback") #when we have attemptID, change this to /student/sum_feedback/#
+def sumFeedback():
+    return render_template('#') #populate
 # END OF STUDENT PAGES #
