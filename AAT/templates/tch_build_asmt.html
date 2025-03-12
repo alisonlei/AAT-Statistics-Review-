@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block left %}
+    <h1>ASSESSMENT BUILDER</h1>
+    <i>Note from Anya: Haven't decided how to make this work yet. It would be good if it went like...
+        press the '+' > 
+        the questions would show > 
+        choose a question > 
+        question list disappears > 
+        it now doesn't show '+', but the name of the question you selected.
+        I haven't figured out how to do that yet.
+        An alternative would be to have a dropdown instead of a +, which shows the list of questions.
+    </i>
+    <div>Name of Assessment: [Textbox]</div>
+    <div id="questionSelectors">
+        <div id="questionSelector">
+            <button>+</button>
+            <button>Clear</button>
+        </div>
+        <div id="questionSelector">
+            <button>+</button>
+            <button>Clear</button>
+        </div>
+        [x10]
+    </div>
+    <button>Save as formative assessment</button>
+    <button>Save as summative assessment</button>
+{% endblock %}
+
+{% block right %}
+    <div id="dropDown">
+        <!--Only show this one of the above + buttons has been clicked-->
+        <h2>MY 'MULTIPLE CHOICE' EXERCISES</h2>    
+            <ul id="dropDownList">
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=1 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=2 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=3 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=4 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=5 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=6 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=7 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=8 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=9 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=10 into DB - pull Question column]
+                </li>
+                [Make it so any that are empty don't show - Teacher may have made less than 10]
+            </ul>    
+        <h2>MY 'FILL THE BLANKS' EXERCISES</h2> 
+            <ul id="dropDownList">
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=11 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=12 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=13 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=14 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=15 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=16 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=17 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=18 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=19 into DB - pull Question column]
+                </li>
+                <li id="exercise">
+                    [Put TeacherID and ExerciseID=20 into DB - pull Question column]
+                </li>
+                [Make it so any that are empty don't show - Teacher may have made less than 10]
+            </ul>
+    </div>
+{% endblock %}

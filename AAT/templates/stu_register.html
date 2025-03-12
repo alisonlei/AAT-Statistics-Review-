@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block left %}
+    <form>
+        <div>Please enter your Student ID...</div>
+        <input type = "text"> 
+        <input type = "submit">
+    </form>
+    <a href="{{url_for('studentHome')}}" alt="A link to access the 'Student Home' page">Temp link to the student home page</a>
+{% endblock %}
