@@ -12,7 +12,7 @@
         open Git Bash
         cd into the folder
         git init
-        git add .
+        git add . [You can add specific files instead if you want, but this way is quicker. Don't worry - as long as you review the changes properly during Step 11, this method won't cause any issues]
         git commit -m “Describe what you’ve changed” (I use “”s because then you can include ‘s inside it)
 
 6. Make a new branch
