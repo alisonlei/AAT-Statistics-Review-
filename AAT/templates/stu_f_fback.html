@@ -1,11 +1,14 @@
 {% extends "layout.html" %}
 
 {% block left %}
+    <i>Needs: Assessment ID; To know if student gave correct and/or incorrect answers to questions</i>
     <h1>MY RESULTS</h1>
+    <div id="mark">Your mark: [Calc score]%</div>
     <ul id="exerciseResults">
         <li id="exerciseResult">
+            <i>(Assessment table>EX_1)>Exercise table</i>
             <div id="question">
-                [Question pulled from DB]
+                [Exercise table>Question]
             </div>
 
             <!-- [Show one depending on answer...] -->
@@ -15,205 +18,17 @@
             </div>
 
             <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
+                Correct answer: [Exercise table>Correct_answer]
             </div>
 
             <!-- [Show one depending on answer...] -->
             <div id="feedback">
                 <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
+                <div id="forIncorrectAnswer">[Exercise table>Feedback]</div>
             </div>
         </li>
-        <li id="exerciseResult">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="mark">
-                <div id="forCorrectAnswer">✓</div>
-                <div id="forIncorrectAnswer">X</div>
-            </div>
-
-            <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="feedback">
-                <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
-            </div>
-        </li>
-        <li id="exerciseResult">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="mark">
-                <div id="forCorrectAnswer">✓</div>
-                <div id="forIncorrectAnswer">X</div>
-            </div>
-
-            <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="feedback">
-                <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
-            </div>
-        </li>
-        <li id="exerciseResult">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="mark">
-                <div id="forCorrectAnswer">✓</div>
-                <div id="forIncorrectAnswer">X</div>
-            </div>
-
-            <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="feedback">
-                <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
-            </div>
-        </li>
-        <li id="exerciseResult">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="mark">
-                <div id="forCorrectAnswer">✓</div>
-                <div id="forIncorrectAnswer">X</div>
-            </div>
-
-            <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="feedback">
-                <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
-            </div>
-        </li>
-        <li id="exerciseResult">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="mark">
-                <div id="forCorrectAnswer">✓</div>
-                <div id="forIncorrectAnswer">X</div>
-            </div>
-
-            <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="feedback">
-                <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
-            </div>
-        </li>
-        <li id="exerciseResult">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="mark">
-                <div id="forCorrectAnswer">✓</div>
-                <div id="forIncorrectAnswer">X</div>
-            </div>
-
-            <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="feedback">
-                <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
-            </div>
-        </li>
-        <li id="exerciseResult">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="mark">
-                <div id="forCorrectAnswer">✓</div>
-                <div id="forIncorrectAnswer">X</div>
-            </div>
-
-            <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="feedback">
-                <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
-            </div>
-        </li>
-        <li id="exerciseResult">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="mark">
-                <div id="forCorrectAnswer">✓</div>
-                <div id="forIncorrectAnswer">X</div>
-            </div>
-
-            <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="feedback">
-                <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
-            </div>
-        </li>
-        <li id="exerciseResult">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="mark">
-                <div id="forCorrectAnswer">✓</div>
-                <div id="forIncorrectAnswer">X</div>
-            </div>
-
-            <div id="correctAnswer">
-                Correct answer: [Correct answer pulled from DB]
-            </div>
-
-            <!-- [Show one depending on answer...] -->
-            <div id="feedback">
-                <div id="forCorrectAnswer">Well done!</div>
-                <div id="forIncorrectAnswer">[Feedback pulled from DB]</div>
-            </div>
-        </li>
-    [Make it so any that are empty don't show - Assessment may have less than 10 exercises]
+        <i>[x10]</i>
+        <i>[Make it so any that are empty don't show - Assessment may have less than 10 exercises]</i>
     </ul>
     <a href="{{url_for('stuSeeAssessments')}}" alt="A link to see that teacher's assessments">Temp link to return to 'Teacher X's Assessments' page</a>
 {% endblock %}

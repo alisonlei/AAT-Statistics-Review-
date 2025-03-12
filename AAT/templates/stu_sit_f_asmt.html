@@ -1,148 +1,25 @@
 {% extends "layout.html" %}
 
 {% block left %}
-    <h1>[ASSESSMENT TITLE PULLED FROM DB]</h1>
+    <i>Page needs Assessment_ID</i>
+    <h1>[Assessment table>Assessment_name]</h1>
     <ul id="assessmentExercises">
         <li id="assessmentExercise">
+            <i>(Assessment table>EX_1)>Exercise table</i>
             <div id="question">
-                [Question pulled from DB]
+                [Exercise table>Question]
             </div>
             <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
+                <li>[Exercise table>Correct_answer]</li>
+                <li>[Exercise table>FalseOp1]</li>
+                <li>[Exercise table>FalseOp2]</li>
+                <li>[Exercise table>FalseOp3]</li>
             </ul>
             <div id="answerInput">
                 [TEXTBOX]
             </div>
         </li>
-        <li id="assessmentExercise">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-            <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
-            </ul>
-            <div id="answerInput">
-                [TEXTBOX]
-            </div>
-        </li>
-        <li id="assessmentExercise">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-            <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
-            </ul>
-            <div id="answerInput">
-                [TEXTBOX]
-            </div>
-        </li>
-        <li id="assessmentExercise">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-            <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
-            </ul>
-            <div id="answerInput">
-                [TEXTBOX]
-            </div>
-        </li>
-        <li id="assessmentExercise">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-            <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
-            </ul>
-            <div id="answerInput">
-                [TEXTBOX]
-            </div>
-        </li>
-        <li id="assessmentExercise">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-            <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
-            </ul>
-            <div id="answerInput">
-                [TEXTBOX]
-            </div>
-        </li>
-        <li id="assessmentExercise">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-            <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
-            </ul>
-            <div id="answerInput">
-                [TEXTBOX]
-            </div>
-        </li>
-        <li id="assessmentExercise">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-            <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
-            </ul>
-            <div id="answerInput">
-                [TEXTBOX]
-            </div>
-        </li>
-        <li id="assessmentExercise">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-            <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
-            </ul>
-            <div id="answerInput">
-                [TEXTBOX]
-            </div>
-        </li>
-        <li id="assessmentExercise">
-            <div id="question">
-                [Question pulled from DB]
-            </div>
-            <ul id="answerOptions">
-                <li>[Option 1 from DB - Correct answer]</li>
-                <li>[Option 2 from DB]</li>
-                <li>[Option 3 from DB]</li>
-                <li>[Option 4 from DB]</li>
-            </ul>
-            <div id="answerInput">
-                [TEXTBOX]
-            </div>
-        </li>
+        <i>[x10]</i>
     </ul>
     [Make it so any that are empty don't show - Assessment may have less than 10 exercises]
     <a href="{{url_for('formFeedback')}}" alt="A link to submit your answers for feedback">Temp link to feedback page</a>
