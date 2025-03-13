@@ -16,7 +16,7 @@
 
 
 
-## HOW TO ADD YOUR CODE TO THIS ##
+## HOW TO ADD YOUR CODE ##
 I (Anya) did this wrong at one point and basically deleted all of our stuff :/ 
 I've now written a guide on how to do this properly, so that we all know how to integrate the code safely. 
 The guide is in >GUIDES>Git guide.md
