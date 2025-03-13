@@ -1,9 +1,19 @@
+If you're viewing this from Git: 
+        Click the 'README.md' header above, 
+        then click the '</>' button 
+        (otherwise the below text won't show properly)
+
+
+
 ## HOW TO RUN OUR PROJECT ON WINDOWS ##
-1. If you're viewing this from Git: Click the 'README.md' header above, then click the '</>' button (otherwise the below text won't show properly)
-2. Open our project on the GitLab website > Use the drop down to move to the master branch > Click 'Code' on the right > Click 'Download source code: zip' [You could use cloning instead but downloading the zip is simpler]
-3. Open Command Prompt
-4. Navigate into the 'AAT' folder
-5. Copy and paste the below into Command Prompt. You only need to do the first line one time, to create the venv.
+1. Open our project on the GitLab website > 
+        Use the drop down to move to the master branch > 
+        Click 'Code' on the right > 
+        Click 'Download source code: zip' 
+        [You could use cloning instead but downloading the zip is simpler]
+2. Open Command Prompt
+3. Navigate into the 'AAT' folder
+4. Copy and paste the below into Command Prompt. You only need to do the first line one time, to create the venv.
         py -3 -m venv .venv
         .venv\Scripts\activate
         pip install Flask
@@ -24,20 +34,20 @@ The guide is in >GUIDES>Git guide.md
 
 
 ## HOW TO USE OUR DATABASE ##
-### HOW TO CREATE TABLES ###
-1. CreateTables.sql holds the code that creates our tables
-2. Check if the tables have been added:
-        Open command line
-        cd into the folder that 'ourdb' is in
+### CREATING TABLES ###
+- CreateTables.sql holds the code that creates our tables
+- To check what tables are in a .db file...
+        Open Command Line
+        Navigate into the folder that the file is in
         Run...
-            .open ourdb.db
+            .open fileName.db [This has to be exact or it'll create a new file]
             .tables
             .pragma table_info(name_of_table);
-### HOW TO ADD DATA TO TABLES ###
-1. PopTables.sql holds the code that populates our tables
-2. Check if the tables have been populated:
-        Open command line
-        cd into the folder that 'ourdb' is in
+### POPULATING TABLES ###
+- PopTables.sql holds the code that populates our tables
+- To check what data is in a table...
+        Open Command Line
+        Navigate into the folder that your .db file is in
         Run...
-            .open ourdb.db
+            .open fileName.db [This has to be exact or it'll create a new file]
             SELECT * from name_of_table;
