@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=""> <!--add stylesheeet link here-->
+    <title>My Questions</title>
+</head>
+<body>
+    <div class="mainContainer">
+        
+        <h1>My Questions</h1>
+        
+        <p>To add a new question, click the 'Add New Question' button. To edit or delete a question, select the relevant question by
+            clicking the checkbox, and press 'Edit' or 'Delete'.</p>
+        <p><b>Note:</b> You can only edit one question at a time! Selecting multiple questions will not work.</p>
+        
+        <div class="mainButtons">
+            <button class="addButton">Add New Question</button>
+            <button class="editButton">Edit</button>
+            <button class="deleteButton">Delete</button>
+        </div>
+        
+        <div class="questionContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Question</th>
+                        <th>Date Created</th>
+                    </tr>
+                </thead>
+                <tbody id="questionList">
+                    <!-- This section will be populated dynamically with data from the Questions database -->
+                    <!-- Below are placeholkder examples of what each row will look like when rendered by Flask/Jinja2 
+                     (hard coded questions, dates etc will be replaced with Flask/Jinja2 templating): -->
+                    <tr>
+                        <td><input type="checkbox" name="selectQuestion" value="1"></td>
+                        <td>What shape has 4 sides of equal length?</td>
+                        <td>05/03/2025</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="selectQuestion" value="2"></td>
+                        <td>What is the name for a 3D circle?</td>
+                        <td>04/03/2025</td>
+                    </tr>
+                    <!-- More questions will be appear depending on what is in the database and added in the 
+                     addQuestion.html page. Questions above are examples only! -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
