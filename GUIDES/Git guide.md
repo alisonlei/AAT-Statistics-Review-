@@ -1,10 +1,10 @@
 [If viewing this in Git, click the </> button above to see the below properly. The IDE messes up the embedding]
         
-1. Download the latest version of our project, either through Git Bash cloning or by downloading the zip from the GitLab website
+1. Open our project on the GitLab website > Use the drop down to move to the master branch > Click 'Code' on the right > Click 'Download source code: zip' [You could use cloning instead but downloading the zip is simpler]
 
 2. Work on your code within this folder
 
-3. Delete your .venv and _pycache_ folders, so that they don't get pushed to git
+3. Delete your .venv and _pycache_ folders, so that they don't get added to git
 
 4. Save a backup copy of your code in another folder, incase the merge goes wrong (it may also be a good idea to save a backup of the whole team’s code)
 
