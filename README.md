@@ -1,4 +1,4 @@
-### HOW TO RUN OUR PROJECT ON WINDOWS ###
+## HOW TO RUN OUR PROJECT ON WINDOWS ##
 1. If you're viewing this from Git: Click the 'README.md' header above, then click the '</>' button (otherwise the below text won't show properly)
 2. Download the entire Zip file
 3. Open Command Prompt
@@ -16,15 +16,15 @@
 
 
 
-### HOW TO ADD YOUR CODE TO THIS ###
+## HOW TO ADD YOUR CODE TO THIS ##
 I (Anya) did this wrong at one point and basically deleted all of our stuff :/ 
 I've now written a guide on how to do this properly, so that we all know how to integrate the code safely. 
 The guide is in >GUIDES>Git guide.md
 
 
 
-### HOW TO USE OUR DATABASE ###
-# HOW TO CREATE TABLES #
+## HOW TO USE OUR DATABASE ##
+### HOW TO CREATE TABLES ###
 1. CreateTables.sql holds the code that creates our tables
 2. Check if the tables have been added:
         Open command line
@@ -33,7 +33,7 @@ The guide is in >GUIDES>Git guide.md
             .open ourdb.db
             .tables
             .pragma table_info(name_of_table);
-# HOW TO ADD DATA TO TABLES #
+### HOW TO ADD DATA TO TABLES ###
 1. PopTables.sql holds the code that populates our tables
 2. Check if the tables have been populated:
         Open command line
