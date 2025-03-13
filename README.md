@@ -1,8 +1,8 @@
 ## HOW TO RUN OUR PROJECT ON WINDOWS ##
 1. If you're viewing this from Git: Click the 'README.md' header above, then click the '</>' button (otherwise the below text won't show properly)
-2. Download the entire Zip file
+2. Open our project on the GitLab website > Use the drop down to move to the master branch > Click 'Code' on the right > Click 'Download source code: zip' [You could use cloning instead but downloading the zip is simpler]
 3. Open Command Prompt
-4. Navigate into 'AAT' folder
+4. Navigate into the 'AAT' folder
 5. Copy and paste the below into Command Prompt. You only need to do the first line one time, to create the venv.
         py -3 -m venv .venv
         .venv\Scripts\activate

@@ -9,8 +9,8 @@
 4. Save a backup copy of your code in another folder, incase the merge goes wrong (it may also be a good idea to save a backup of the whole team’s code)
 
 5. Make your local folder a repo
-        open Git Bash
-        cd into the folder
+        Open Git Bash
+        Navigate into the folder
         git init
         git add . [You can add specific files instead if you want, but this way is quicker. Don't worry - as long as you review the changes properly during Step 11, this method won't cause any issues]
         git commit -m “Describe what you’ve changed” (I use “”s because then you can include ‘s inside it)
