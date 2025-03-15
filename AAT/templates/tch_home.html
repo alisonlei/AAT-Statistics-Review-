@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block left %}
+    <h1>TEACHER HOME</h1>
+    <ul id="teacherHomeButtons">
+        <li>
+            <a href="#" alt="A button to view the questions you've created">My Questions</a>
+        </li><!--Populate link-->
+        <li>
+            <a href="{{url_for('tchSeeAssessments')}}" alt="A button to view the assessments you've created">My Assessments</a>
+        </li>
+        <li>
+            <a href="{{url_for('stat_home')}}" alt="A button to view the statistics on the questions and assessments you've created">My Statistics</a>
+        </li><!--Populate link-->
+    </ul>
+{% endblock %}
+
+<!-- {% block right %}
+{% endblock %} -->
