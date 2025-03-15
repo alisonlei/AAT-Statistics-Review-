@@ -1,0 +1,4 @@
+**/__pycache__
+**/StatisticsReviewer/*
+!StatisticsReviewer/testdatabase.db
+.venv/

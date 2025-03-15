@@ -1,6 +1,18 @@
 from AAT import app, db
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for,jsonify,request
 
+# from StatisticsReviewer import app, db
+# from StatisticsReviewer.models import *
+
+from Stat_resources import Responses,Attempts,SaScore
+from flask_restful import Api
+from AAT.models import *
+#create a rest API endpoint
+api=Api(app)
+#take the class that inherits the resource class and its route
+api.add_resource(Responses,"/api/Formative/")#A resource in Flask-RESTful is a class that handles HTTP requests.  
+api.add_resource(Attempts,"/api/FormativeAttempt/<int:assessment_id>")
+api.add_resource(SaScore,"/api/Attainment/<int:assessment_id>/<int:cohort>")
 
 
 @app.route("/")
@@ -25,7 +37,25 @@ def tchSeeAssessments():
 @app.route("/teacher/assessmentbuilder") #when we have teacherIDs, change this to /teacher/assessmentbuilder/#
 def buildAssessment():
     return render_template('tch_build_asmt.html')
-# END OF TEACHER PAGES #
+
+@app.route("/teacher/stat_home") 
+def stat_home():
+    return render_template('stat_home.html')
+
+@app.route("/teacher/stat_home/attainment")
+def attainment():
+    print("get attainment")
+    #this function gets the first summative assessment res for all intake years
+    return render_template('tch_statistics/attainment.html')
+
+@app.route("/teacher/stat_home/fs")
+def fs():
+    assessment_names=getParameters("StatisticsReviewer/testdatabase.db","Assessment","Assessment_name")
+    print(assessment_names)
+    topics=getParameters("StatisticsReviewer/testdatabase.db","Response","topic")
+    return render_template('tch_statistics/fsStatistics.html',assessment_lt=assessment_names,topic_lt=topics)
+
+#END OF TEACHER PAGES #
 
 
 
