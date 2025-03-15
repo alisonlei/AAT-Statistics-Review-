@@ -1,12 +1,11 @@
 from AAT import app, db
+from AAT.models import *
 from flask import Flask, render_template, url_for,jsonify,request
 
 # from StatisticsReviewer import app, db
 # from StatisticsReviewer.models import *
-
 from Stat_resources import Responses,Attempts,SaScore
 from flask_restful import Api
-from AAT.models import *
 #create a rest API endpoint
 api=Api(app)
 #take the class that inherits the resource class and its route
@@ -15,28 +14,34 @@ api.add_resource(Attempts,"/api/FormativeAttempt/<int:assessment_id>")
 api.add_resource(SaScore,"/api/Attainment/<int:assessment_id>/<int:cohort>")
 
 
+
+### LANDING PAGE ###
 @app.route("/")
 def landingPage():
     return render_template('landing.html')
 
 
 
-# TEACHER PAGES #
-@app.route("/teacher/register")
+### TEACHER PAGES ###
+@app.route("/register/teacher")
 def teacherReg():
     return render_template('tch_register.html')
 
-@app.route("/teacher/home")
-def teacherHome():
-    return render_template('tch_home.html')
+@app.route("/home/<Teacher_ID>")
+def teacherHome(Teacher_ID):
+    return render_template('tch_home.html',Teacher_ID=Teacher_ID)
 
-@app.route("/teacher/myassessments") #when we have teacherIDs, change this to /teacher/myassessments/#
-def tchSeeAssessments():
-    return render_template('tch_see_asmts.html')
+@app.route("/myassessments/<Teacher_ID>")
+def tchSeeAssessments(Teacher_ID):
+    formatives = AssessmentDAO.allFormAssessments(db) #STORE ALL FORMATIVE ASSESSMENT ROWS IN VARIABLE
+    summatives = AssessmentDAO.allSumAssessments(db) #STORE ALL SUMMATIVE ASSESSMENT ROWS IN VARIABLE
+    return render_template('tch_see_asmts.html',formatives=formatives,summatives=summatives,Teacher_ID=Teacher_ID)
 
-@app.route("/teacher/assessmentbuilder") #when we have teacherIDs, change this to /teacher/assessmentbuilder/#
-def buildAssessment():
-    return render_template('tch_build_asmt.html')
+@app.route("/assessmentbuilder/<Teacher_ID>")
+def buildAssessment(Teacher_ID):
+    FTBs = ExerciseDAO.allFTBExercises(db) #STORE ALL FTB EXERCISE ROWS IN VARIABLE
+    MCQs = ExerciseDAO.allMCQExercises(db) #STORE ALL MCQ EXERCISE ROWS IN VARIABLE
+    return render_template('tch_build_asmt.html',FTBs=FTBs,MCQs=MCQs,Teacher_ID=Teacher_ID)
 
 @app.route("/teacher/stat_home") 
 def stat_home():
@@ -54,37 +59,72 @@ def fs():
     print(assessment_names)
     topics=getParameters("StatisticsReviewer/testdatabase.db","Response","topic")
     return render_template('tch_statistics/fsStatistics.html',assessment_lt=assessment_names,topic_lt=topics)
-
-#END OF TEACHER PAGES #
-
+### END OF TEACHER PAGES ###
 
 
-# STUDENT PAGES #
-@app.route("/student/register")
+
+### STUDENT PAGES ###
+@app.route("/register/student")
 def studentReg():
     return render_template('stu_register.html')
 
-@app.route("/student/home")
+@app.route("/search")
 def studentHome():
     return render_template('stu_home.html')
 
-@app.route("/student/assessments") #when we have teacherIDs, change this to /student/assessments/#
-def stuSeeAssessments():
-    return render_template('stu_see_asmts.html')
+@app.route("/teacher/<Teacher_ID>")
+def stuSeeAssessments(Teacher_ID):
+    formatives = AssessmentDAO.allFormAssessments(db) #STORE ALL FORMATIVE ASSESSMENT ROWS IN VARIABLE
+    summatives = AssessmentDAO.allSumAssessments(db) #STORE ALL SUMMATIVE ASSESSMENT ROWS IN VARIABLE
+    return render_template('stu_see_asmts.html',formatives=formatives,summatives=summatives,Teacher_ID=Teacher_ID)
 
-@app.route("/student/form_assessment") #when we have assessmentIDs, change this to /student/form_assessment/#
-def sitFormAssessment():
-    return render_template('stu_sit_f_asmt.html')
+@app.route("/form_assessment/<Assessment_ID>")
+def sitFormAssessment(Assessment_ID):
+    assessment = AssessmentDAO.AssessmentById(Assessment_ID,db)
+    # SOURCE DETAILS ON ASSIGNMENT'S EXERCISES...
+    exerciseIDs = [
+        assessment.ExID_1,
+        assessment.ExID_2,
+        assessment.ExID_3,
+        assessment.ExID_4,
+        assessment.ExID_5,
+        assessment.ExID_6,
+        assessment.ExID_7,
+        assessment.ExID_8,
+        assessment.ExID_9,
+        assessment.ExID_10,
+    ]
+    exercises = []
+    for exerciseID in exerciseIDs:
+        exercise = ExerciseDAO.ExerciseById(exerciseID,db)
+        exercises.append(exercise)
+    # ...END OF SOURCING DETAILS ON ASSIGNMENT'S EXERCISES
+    return render_template('stu_sit_f_asmt.html',assessment=assessment,exercises=exercises)
 
-@app.route("/student/sum_assessment") #when we have assessmentIDs, change this to /student/sum_assessment/#
-def sitSumAssessment():
-    return render_template('#') #populate
+@app.route("/sum_assessment/<Assessment_ID>")
+def sitSumAssessment(Assessment_ID):
+    return render_template('#')
 
-@app.route("/student/form_feedback") #when we have attemptID, change this to /student/form_feedback/#
-def formFeedback():
-    return render_template('stu_f_fback.html') #populate
-
-@app.route("/student/sum_feedback") #when we have attemptID, change this to /student/sum_feedback/#
-def sumFeedback():
-    return render_template('#') #populate
-# END OF STUDENT PAGES #
+@app.route("/form_feedback/<Assessment_ID>")
+def formFeedback(Assessment_ID):
+    assessment = AssessmentDAO.AssessmentById(Assessment_ID,db)
+    # SOURCE DETAILS ON ASSIGNMENT'S EXERCISES...
+    exerciseIDs = [
+        assessment.ExID_1,
+        assessment.ExID_2,
+        assessment.ExID_3,
+        assessment.ExID_4,
+        assessment.ExID_5,
+        assessment.ExID_6,
+        assessment.ExID_7,
+        assessment.ExID_8,
+        assessment.ExID_9,
+        assessment.ExID_10,
+    ]
+    exercises = []
+    for exerciseID in exerciseIDs:
+        exercise = ExerciseDAO.ExerciseById(exerciseID,db)
+        exercises.append(exercise)
+    # ...END OF SOURCING DETAILS ON ASSIGNMENT'S EXERCISES
+    return render_template('stu_f_fback.html',exercises=exercises,assessment=assessment)
+### END OF STUDENT PAGES ###
