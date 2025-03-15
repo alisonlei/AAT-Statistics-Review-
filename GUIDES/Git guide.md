@@ -4,7 +4,7 @@
 
 2. Work on your code within this folder
 
-3. Delete your .venv and _pycache_ folders, so that they don't get added to git
+3. Delete your .venv and _pycache_ folders from the AAT folder, and the _pycache_ folder in the main folder - so that they don't get added to git
 
 4. Save a backup copy of your code in another folder, incase the merge goes wrong (it may also be a good idea to save a backup of the whole team’s code)
 
@@ -41,11 +41,16 @@
 11. On the GitLab website, check your merge wouldn’t damage the rest of the code…
         Open your merge request
         If it says 'Merge blocked':
-                Click 'Resolve conflicts'
-                Make sure 'Side-by-side' and 'Interactive mode' are selected
-                Review the differences, and click either ‘Use their code’ or ‘Use our code’ (Remember there may have been changes to the code since you last downloaded it)
-                At the bottom, click 'Commit to source branch'
+                If 'Resolve conflicts' button appears:
+                        Click it
+                        Make sure 'Side-by-side' and 'Interactive mode' are selected
+                        Review the differences, and click either ‘Use their code’ or ‘Use our code' (Remember there may have been changes to the code since you last downloaded it)
+                        At the bottom, click 'Commit to source branch'
+                If 'Resolve conflicts' button doesn't appear:
+                        Resolve the conflicts locally (e.g., through VS code)
+                        Clear the branch you made [I do this by deleting my branch through the GitLab repo's 'Branches' tab]
+                        Return to step 1
         Wait until it says 'Ready to merge!'
-        Click 'Merge'
+        Click 'Merge' [Don't worry if this button doesn't appear automatically, just go back to the 'Merge requests' tab and open the merge request again]
 
-12. If you want to check this didn't damage anything - download the team's code again and check it works
+12. To check this merge didn't affect the website's functionality, download the master branch's code (see Step 1) and check it works (see README.md for how to run our website)
