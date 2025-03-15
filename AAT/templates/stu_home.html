@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block left %}
+    <form>
+        <div>Please enter your Teacher's ID...</div>
+        <input type = "text"> 
+        <input type = "submit">
+    </form>
+    <a href="{{url_for('stuSeeAssessments',Teacher_ID=1)}}" alt="A link to see that teacher's assessments">Temp link to see a teacher's assessments</a>
+{% endblock %}

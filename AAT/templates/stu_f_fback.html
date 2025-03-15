@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block left %}
+    <h1>MY RESULTS FOR {{assessment.Assessment_name}}</h1>
+
+    <div id="mark">
+        <b>YOUR MARK:</b> [Calc score]%
+    </div>
+
+    <ul id="results_list">
+        {% for exercise in exercises %}
+            <div id="results_list_item">
+                <li>
+                    <div id="question">
+                        {{exercise.Question}}
+                    </div>
+                    <div id="mark"> <!-- [Show one depending on answer...] -->
+                        <div id="forCorrectAnswer">✓</div>
+                        <div id="forIncorrectAnswer">X</div>
+                    </div>
+                    <div id="correctAnswer">
+                        <b>CORRECT ANSWER:</b> {{exercise.Correct_answer}}
+                    </div>
+                    <div id="feedback"> <!-- [Show one depending on answer...] -->
+                        <div id="forCorrectAnswer">Well done!</div>
+                        <div id="forIncorrectAnswer">
+                            <b>WHY?</b> {{exercise.How_corr_answ_was_reached}}
+                        </div>
+                    </div>
+                </li>
+            </div>
+        {% endfor %}
+    </ul>
+
+    <a href="{{url_for('stuSeeAssessments',Teacher_ID=assessment.Teacher_ID)}}" alt="A link to see a list of this teacher's assessments">Temp link to return to 'Teacher X's Assessments' page</a>
+
+{% endblock %}

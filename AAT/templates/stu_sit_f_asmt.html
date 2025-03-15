@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block left %}
+
+    <h1>{{assessment.Assessment_name}}</h1>
+
+    <ul id=exercise_list>
+        {% for exercise in exercises %}
+            <div id="exercise_list_item">
+                <li>
+                    <div id="question">
+                        {{exercise.Question}}
+                    </div> 
+                    <ul id="answerOptions">
+                        <li>{{exercise.Correct_answer}}</li>
+                        <li>{{exercise.FalseOp1}}</li>
+                        <li>{{exercise.FalseOp2}}</li>
+                        <li>{{exercise.FalseOp3}}</li>
+                    </ul>
+                    <div id="answerInput">
+                        [TEXTBOX]
+                    </div>
+                </li>
+            </div>
+        {% endfor %}
+    </ul>
+
+    <a href="{{url_for('formFeedback',Assessment_ID=assessment.Assessment_ID)}}" alt="A link to submit your answers for feedback">Temp link to feedback page</a>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block left %}
+    <h1>TEACHER {{Teacher_ID}}'S ASSESSMENTS</h1>
+    
+    <h2>Formative Assessments</h2>
+        <div>Click on an assessment to take it. You may retake formative assessments as many times as you'd like.</div>
+        <ul id=assessments_list>
+            {% for row in formatives %}
+                <div id="assessments_list_item">
+                    <li>
+                        <a href="{{url_for('sitFormAssessment',Assessment_ID=row.Assessment_ID)}}" alt="Link to sit assessment {{row.Assessment_name}}">
+                            {{row.Assessment_name}}
+                        </a>
+                    </li>
+                </div>
+            {% endfor %}
+        </ul>
+
+    <h2>Summative Assessments</h2>
+        <div>Click on an assessment to take it. You may only take a summative assessment once.</div>
+        <ul id=assessments_list>
+            {% for row in summatives %}
+                <div id="assessments_list_item">
+                    <li>
+                        <a href="{{url_for('sitSumAssessment',Assessment_ID=row.Assessment_ID)}}" alt="Link to sit assessment {{row.Assessment_name}}">
+                            {{row.Assessment_name}}
+                        </a>
+                    </li>
+                </div>
+            {% endfor %}
+        </ul>
+
+{% endblock %}
