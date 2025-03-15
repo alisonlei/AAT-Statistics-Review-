@@ -19,6 +19,7 @@ If you're viewing this from Git:
         pip install Flask
         pip install -U Flask-SQLAlchemy
         pip install flask flask_sqlalchemy
+        pip install flask_restful
         flask --app __init__ run --debug
 5. When you need to close the venv...
         Press CTRL+C

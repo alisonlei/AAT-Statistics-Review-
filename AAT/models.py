@@ -86,6 +86,8 @@ class ExerciseDAO():
         return found_exercises
 
 
+
+
 # STATISTICS
 import sqlite3
 def queryDb(database_path,table_name,sql):

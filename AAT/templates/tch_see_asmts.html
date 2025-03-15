@@ -2,25 +2,32 @@
 
 {% block left %}
     <h1>MY ASSESSMENTS</h1>
-    <div>Click on assessments to view their details, or "+" to create a new assessment.</div>
+
+    <div>Click on an assessment to see or change its details, or "+" to create a new assessment.</div>
+
     <h2>Formative Assessments</h2>
-        <ul id=assessmentsList>
-            <li>[Assessment name pulled from DB, filtered to just formatives]</li>
-            <li>[Assessment name pulled from DB, filtered to just formatives]</li>
-            <li>[Assessment name pulled from DB, filtered to just formatives]</li>
-            <li>[Assessment name pulled from DB, filtered to just formatives]</li>
+        <ul id=assessments_list>
+            {% for row in formatives %}
+                <div id="assessments_list_item">
+                    <li>{{row.Assessment_name}}</li>
+                    [MAKE IT A LINK, TO MAKE EDITS]
+                    [ADD LINK TO DELETE]
+                </div>
+            {% endfor %}
         </ul>
-        [Make it so any that are empty don't show - Teacher may have made less than 4]
 
     <h2>Summative Assessments</h2>
-        <ul id=assessmentsList>
-            <li>[Assessment name pulled from DB, filtered to just summatives]</li>
-            <li>[Assessment name pulled from DB, filtered to just summatives]</li>
-            <li>[Assessment name pulled from DB, filtered to just summatives]</li>
-            <li>[Assessment name pulled from DB, filtered to just summatives]</li>
+        <ul id=assessments_list>
+            {% for row in summatives %}
+                <div id="assessments_list_item">
+                    <li>{{row.Assessment_name}}</li>
+                    [MAKE IT A LINK, TO MAKE EDITS]
+                    [ADD LINK TO DELETE]
+                </div>
+            {% endfor %}
         </ul>
 {% endblock %}
 
 {% block right %}
-    <a href="{{url_for('buildAssessment')}}" alt="A button to build an assessment">+</a>
+    <a href="{{url_for('buildAssessment',Teacher_ID=Teacher_ID)}}" alt="A button to build an assessment">+</a>
 {% endblock %}

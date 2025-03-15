@@ -31,72 +31,22 @@
     <div id="dropDown">
         <!--Only show this one of the above + buttons has been clicked-->
         <h2>MY 'MULTIPLE CHOICE' EXERCISES</h2>    
-            <ul id="dropDownList">
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=1 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=2 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=3 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=4 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=5 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=6 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=7 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=8 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=9 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=10 into DB - pull Question column]
-                </li>
-                [Make it so any that are empty don't show - Teacher may have made less than 10]
-            </ul>    
+            <ul id=exercises_list>
+                {% for row in MCQs %}
+                    <div id="exercises_list_item">
+                        <li>{{row.Question}}</li>
+                        [Make it a button] 
+                    </div>
+                {% endfor %}
+            </ul>
         <h2>MY 'FILL THE BLANKS' EXERCISES</h2> 
-            <ul id="dropDownList">
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=11 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=12 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=13 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=14 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=15 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=16 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=17 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=18 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=19 into DB - pull Question column]
-                </li>
-                <li id="exercise">
-                    [Put TeacherID and ExerciseID=20 into DB - pull Question column]
-                </li>
-                [Make it so any that are empty don't show - Teacher may have made less than 10]
+            <ul id=exercises_list>
+                {% for row in FTBs %}
+                    <div id="exercises_list_item">
+                        <li>{{row.Question}}</li>
+                        [Make it a button] 
+                    </div>
+                {% endfor %}
             </ul>
     </div>
 {% endblock %}
