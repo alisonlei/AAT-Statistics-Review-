@@ -1,10 +1,13 @@
-{% extends "layout.html" %}
+{% extends "layout_gen.html" %}
+
+{% block navlinks %}
+    <a href="{{url_for('landingPage')}}" alt="A link to the landing page">Exit</a>
+{% endblock %}
 
 {% block left %}
-    <form>
-        <div>Please enter your Teacher ID...</div>
-        <input type = "text"> 
-        <input type = "submit">
+    <form action="{{url_for('teacherHome',Teacher_ID=1)}}">
+        <label for="enter">Please enter your Teacher ID number...</label>
+        <input id="enter" type="text" placeholder="Enter it here!"> 
+        <input type="submit" value="PROCEED TO TEACHER PORTAL"/>
     </form>
-    <a href="{{url_for('teacherHome',Teacher_ID=1)}}" alt="A link to access the 'Teacher Home' page">Temp link to a teacher's home page</a>
 {% endblock %}
