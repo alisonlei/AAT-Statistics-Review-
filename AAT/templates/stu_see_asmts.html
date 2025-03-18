@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout_stu.html" %}
 
 {% block left %}
     <h1>TEACHER {{Teacher_ID}}'S ASSESSMENTS</h1>
@@ -9,7 +9,7 @@
             {% for row in formatives %}
                 <div id="assessments_list_item">
                     <li>
-                        <a href="{{url_for('sitFormAssessment',Assessment_ID=row.Assessment_ID)}}" alt="Link to sit assessment {{row.Assessment_name}}">
+                        <a href="{{url_for('sitFormAssessment',Assessment_ID=row.Assessment_ID,Student_ID=1)}}" alt="Link to sit assessment {{row.Assessment_name}}">
                             {{row.Assessment_name}}
                         </a>
                     </li>

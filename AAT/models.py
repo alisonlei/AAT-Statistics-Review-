@@ -7,7 +7,15 @@ from typing import List
 
 
 
-# LINK 'Assessment' AND 'Exercise' TABLES THROUGH 'OBJECT RELATIONSHIP MAPPING'(ORM)
+# ATTEMPT TABLE ORMs
+class AttemptORM(Base):
+    __tablename__="Attempt"
+    Attempt_ID=Column(Integer, primary_key=True)
+    Exercise_ID=Column(Integer)
+    Student_ID=Column(Integer)
+    inputtedAnswer=Column(String)
+    Set0forWrong1forRight=Column(Integer)
+
 # ASSESSMENT TABLE ORM
 class AssessmentORM(Base):    
     __tablename__ = "Assessment"
@@ -25,7 +33,8 @@ class AssessmentORM(Base):
     ExID_8 = Column(Integer)
     ExID_9 = Column(Integer)
     ExID_10 = Column(Integer)
-    assessments: Mapped[List["ExerciseORM"]] = relationship(secondary='assessmentContent')
+    # assessments: Mapped[List["ExerciseORM"]] = relationship(secondary='assessmentContent')
+
 # EXERCISE TABLE ORM
 class ExerciseORM(Base):    
     __tablename__ = "Exercise"
@@ -39,17 +48,26 @@ class ExerciseORM(Base):
     FalseOp1 = Column(String)
     FalseOp2 = Column(String)
     FalseOp3 = Column(String)
-    exercises: Mapped[List["AssessmentORM"]] = relationship(secondary='assessmentContent')
+    # exercises: Mapped[List["AssessmentORM"]] = relationship(secondary='assessmentContent')
+
 # DEFINE THE RELATIONSHIP [IF WE NEED TO USE THIS WE NEED TO MAKE TABLE 'assessmentContent']
-    assessmentContent = Table(
-        'assessmentContent',
-        Base.metadata,
-        Column("Exercise_ID", ForeignKey("Exercise.Exercise_ID"), primary_key=True),
-        Column("Assessment_ID", ForeignKey("Assessment.Assessment_ID"), primary_key=True),
-    )
+    # assessmentContent = Table(
+    #     'assessmentContent',
+    #     Base.metadata,
+    #     Column("Exercise_ID", ForeignKey("Exercise.Exercise_ID"), primary_key=True),
+    #     Column("Assessment_ID", ForeignKey("Assessment.Assessment_ID"), primary_key=True),
+    # )
 
 
 
+
+
+# ACCESS DATA FROM 'Attempt' TABLE THROUGH 'DATA ACCESS OBJECT' (DAO)
+class AttemptDAO():
+    def AttemptById(Attempt_ID, db): #METHOD TO ACCESS AN INDIVIDUAL ASSESSMENT'S ROW
+        stm = select(AttemptORM).where(AttemptORM.Attempt_ID == Attempt_ID)
+        found_attempt = db.session.scalar(stm)
+        return found_attempt
 
 # ACCESS DATA FROM 'Assessment' TABLE THROUGH 'DATA ACCESS OBJECT' (DAO)
 class AssessmentDAO():

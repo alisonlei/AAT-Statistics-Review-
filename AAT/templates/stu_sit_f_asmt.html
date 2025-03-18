@@ -1,30 +1,351 @@
-{% extends "layout.html" %}
+{% extends "layout_stu.html" %}
 
 {% block left %}
-
     <h1>{{assessment.Assessment_name}}</h1>
+    
+    <label for="formAssessmentAnswers">Please populate your answers below. If you need to type a number, you must write it as a whole number (e.g., '4' not 'four' or '4.0')...</label>
+    <form id="formAssessmentAnswers" action="#" method="post">
 
-    <ul id=exercise_list>
-        {% for exercise in exercises %}
-            <div id="exercise_list_item">
-                <li>
-                    <div id="question">
-                        {{exercise.Question}}
-                    </div> 
-                    <ul id="answerOptions">
-                        <li>{{exercise.Correct_answer}}</li>
-                        <li>{{exercise.FalseOp1}}</li>
-                        <li>{{exercise.FalseOp2}}</li>
-                        <li>{{exercise.FalseOp3}}</li>
-                    </ul>
-                    <div id="answerInput">
-                        [TEXTBOX]
-                    </div>
-                </li>
-            </div>
-        {% endfor %}
-    </ul>
+        <div id="exerciseContainer">
 
-    <a href="{{url_for('formFeedback',Assessment_ID=assessment.Assessment_ID)}}" alt="A link to submit your answers for feedback">Temp link to feedback page</a>
+            <h2>1) {{exercises[0].Question}}</h2>
+            
+            {% if exercises[0].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
 
+                    <input type="radio" id="MCQoption" name="ans1" value="{{exercises[0].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[0].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans1" value="{{exercises[0].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[0].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans1" value="{{exercises[0].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[0].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans1" value="{{exercises[0].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[0].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[0].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans1" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+
+        <div id="exerciseContainer">
+
+            <h2>2) {{exercises[1].Question}}</h2>
+            
+            {% if exercises[1].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
+
+                    <input type="radio" id="MCQoption" name="ans2" value="{{exercises[1].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[1].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans2" value="{{exercises[1].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[1].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans2" value="{{exercises[1].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[1].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans2" value="{{exercises[1].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[1].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[1].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans2" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+
+        <div id="exerciseContainer">
+
+            <h2>3) {{exercises[2].Question}}</h2>
+            
+            {% if exercises[2].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
+
+                    <input type="radio" id="MCQoption" name="ans3" value="{{exercises[2].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[2].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans3" value="{{exercises[2].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[2].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans3" value="{{exercises[2].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[2].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans3" value="{{exercises[2].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[2].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[2].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans3" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+
+        <div id="exerciseContainer">
+
+            <h2>4) {{exercises[3].Question}}</h2>
+            
+            {% if exercises[3].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
+
+                    <input type="radio" id="MCQoption" name="ans4" value="{{exercises[3].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[3].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans4" value="{{exercises[3].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[3].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans4" value="{{exercises[3].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[3].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans4" value="{{exercises[3].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[3].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[3].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans4" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+
+        <div id="exerciseContainer">
+
+            <h2>5) {{exercises[4].Question}}</h2>
+            
+            {% if exercises[4].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
+
+                    <input type="radio" id="MCQoption" name="ans5" value="{{exercises[4].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[4].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans5" value="{{exercises[4].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[4].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans5" value="{{exercises[4].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[4].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans5" value="{{exercises[4].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[4].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[4].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans5" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+
+        <div id="exerciseContainer">
+
+            <h2>6) {{exercises[5].Question}}</h2>
+            
+            {% if exercises[5].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
+
+                    <input type="radio" id="MCQoption" name="ans6" value="{{exercises[5].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[5].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans6" value="{{exercises[5].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[5].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans6" value="{{exercises[5].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[5].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans6" value="{{exercises[5].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[5].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[5].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans6" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+
+        <div id="exerciseContainer">
+
+            <h2>7) {{exercises[6].Question}}</h2>
+            
+            {% if exercises[6].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
+
+                    <input type="radio" id="MCQoption" name="ans7" value="{{exercises[6].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[6].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans7" value="{{exercises[6].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[6].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans7" value="{{exercises[6].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[6].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans7" value="{{exercises[6].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[6].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[6].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans7" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+
+        <div id="exerciseContainer">
+
+            <h2>8) {{exercises[7].Question}}</h2>
+            
+            {% if exercises[7].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
+
+                    <input type="radio" id="MCQoption" name="ans8" value="{{exercises[7].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[7].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans8" value="{{exercises[7].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[7].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans8" value="{{exercises[7].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[7].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans8" value="{{exercises[7].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[7].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[7].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans8" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+
+        <div id="exerciseContainer">
+
+            <h2>9) {{exercises[8].Question}}</h2>
+            
+            {% if exercises[8].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
+
+                    <input type="radio" id="MCQoption" name="ans9" value="{{exercises[8].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[8].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans9" value="{{exercises[8].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[8].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans9" value="{{exercises[8].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[8].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans9" value="{{exercises[8].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[8].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[8].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans9" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+
+        <div id="exerciseContainer">
+
+            <h2>10) {{exercises[9].Question}}</h2>
+            
+            {% if exercises[9].Set0forFTB_1forMCQ == 1 %}
+                <div id="MCQOptions">
+
+                    <input type="radio" id="MCQoption" name="ans10" value="{{exercises[9].Correct_answer}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[9].Correct_answer}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans10" value="{{exercises[9].FalseOp1}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[9].FalseOp1}}</label>
+                    <br>
+
+                    <input type="radio" id="MCQoption" name="ans10" value="{{exercises[9].FalseOp2}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[9].FalseOp2}}</label>
+                    <br>
+                    
+                    <input type="radio" id="MCQoption" name="ans10" value="{{exercises[9].FalseOp3}}">
+                    <label for="MCQoption" id="optionLabel">{{exercises[9].FalseOp3}}</label>
+                    <br>
+                </div>
+
+            {% elif exercises[9].Set0forFTB_1forMCQ == 0 %}
+                <div id="FTBBox">
+                    <label for="answerTextBox">What should be in this blank space?</label>
+                    <br>
+                    <textarea id="answerTextBox" name="ans10" placeholder="Please enter your answer..." rows="1" cols="50"></textarea>
+                </div>
+            
+            {% endif %}
+        </div>
+            
+        <input type="Submit" value="MARK MY ANSWERS">
+    </form>
 {% endblock %}

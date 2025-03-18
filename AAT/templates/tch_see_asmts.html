@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout_tch.html" %}
 
 {% block left %}
     <h1>MY ASSESSMENTS</h1>
@@ -9,9 +9,16 @@
         <ul id=assessments_list>
             {% for row in formatives %}
                 <div id="assessments_list_item">
-                    <li>{{row.Assessment_name}}</li>
-                    [MAKE IT A LINK, TO MAKE EDITS]
-                    [ADD LINK TO DELETE]
+                    <li>
+                        <a href="{{url_for('buildAssessment',
+                                            Teacher_ID=Teacher_ID,
+                                            NewIs0OldisID=row.Assessment_ID
+                                )}}" alt="Click to edit this assessment">{{row.Assessment_name}}</a>
+                    </li>
+
+                    <form action="{{url_for('delAss',Assessment_ID=row.Assessment_ID)}}">
+                        <input type="submit" value="DELETE THIS ASSESSMENT" />
+                    </form>
                 </div>
             {% endfor %}
         </ul>
@@ -20,14 +27,19 @@
         <ul id=assessments_list>
             {% for row in summatives %}
                 <div id="assessments_list_item">
-                    <li>{{row.Assessment_name}}</li>
-                    [MAKE IT A LINK, TO MAKE EDITS]
-                    [ADD LINK TO DELETE]
+                    <li>
+                        <a href="{{url_for('buildAssessment',
+                                                Teacher_ID=Teacher_ID,
+                                                NewIs0OldisID=row.Assessment_ID
+                                    )}}" alt="Click to edit this assessment">{{row.Assessment_name}}</a>
+                    </li>
                 </div>
             {% endfor %}
         </ul>
 {% endblock %}
 
 {% block right %}
-    <a href="{{url_for('buildAssessment',Teacher_ID=Teacher_ID)}}" alt="A button to build an assessment">+</a>
+    <form action="{{url_for('buildAssessment',Teacher_ID=Teacher_ID,NewIs0OldisID=0)}}">
+        <input type="submit" value="+" />
+    </form>
 {% endblock %}

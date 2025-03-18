@@ -1,10 +1,11 @@
-{% extends "layout.html" %}
+{% extends "layout_stu.html" %}
 
 {% block left %}
-    <form>
-        <div>Please enter your Teacher's ID...</div>
-        <input type = "text"> 
-        <input type = "submit">
+    <b>Welcome to the Student portal!</b>
+    <form action="{{url_for('stuSeeAssessments',Teacher_ID=1)}}">
+        <label for="enter">Use this search bar to find your teacher's profile...</label>
+        <input id="enter" type="text" placeholder="Enter your teacher's ID"> 
+        <input type="submit" value="SHOW THEIR PROFILE"/>
     </form>
-    <a href="{{url_for('stuSeeAssessments',Teacher_ID=1)}}" alt="A link to see that teacher's assessments">Temp link to see a teacher's assessments</a>
+
 {% endblock %}

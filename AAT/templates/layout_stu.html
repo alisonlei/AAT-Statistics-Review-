@@ -1,0 +1,7 @@
+{% extends "layout_gen.html" %}
+
+{% block navlinks %}
+    <a href="{{url_for('studentHome')}}" alt="A link to access the 'Student Home' page">Teacher Search</a>
+    <div id="navlinkgap"></div>
+    <a href="{{url_for('landingPage')}}" alt="A link to logout of the Student portal">Logout</a>
+{% endblock %}

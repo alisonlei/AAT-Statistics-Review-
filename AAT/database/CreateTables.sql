@@ -46,3 +46,12 @@ CREATE TABLE Exercise(
     PRIMARY KEY(Exercise_ID),
     FOREIGN KEY (Teacher_ID) REFERENCES Assessment(Teacher_ID)
 );
+
+CREATE TABLE Attempt(
+    Attempt_ID INTEGER,
+    Exercise_ID INTEGER,
+    Student_ID INTEGER,
+    inputtedAnswer TEXT,
+    Set0forWrong1forRight INTEGER,
+    PRIMARY KEY(Attempt_ID)
+)
