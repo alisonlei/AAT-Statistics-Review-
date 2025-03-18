@@ -47,7 +47,6 @@ def buildAssessment(Teacher_ID,NewIs0OldisID):
     FTBs = ExerciseDAO.allFTBExercises(db)
     MCQs = ExerciseDAO.allMCQExercises(db)
 
-    #bookmarknew
     # STORE AUTOCOMPLETES FOR EDITING OLD ASSESSEMENTS
     if NewIs0OldisID != '0':
         assessment = AssessmentDAO.AssessmentById(NewIs0OldisID, db)
@@ -242,7 +241,6 @@ def sitFormAssessment(Assessment_ID,Student_ID):
     for exercise in exercises:
         correctAnswers.append(exercise.Correct_answer)
 
-    #bookmarkog
     # MAKE SPACE FOR FORM DATA
     db.session.query(AttemptORM).delete()
     db.session.commit()
