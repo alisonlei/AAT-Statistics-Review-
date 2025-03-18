@@ -54,4 +54,4 @@ CREATE TABLE Attempt(
     inputtedAnswer TEXT,
     Set0forWrong1forRight INTEGER,
     PRIMARY KEY(Attempt_ID)
-)
+);
