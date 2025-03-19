@@ -1,0 +1,45 @@
+{% extends "layout_tch.html" %}
+
+{% block left %}
+    <h1>MY ASSESSMENTS</h1>
+
+    <div>Click on an assessment to see or change its details, or "+" to create a new assessment.</div>
+
+    <h2>Formative Assessments</h2>
+        <ul id=assessments_list>
+            {% for row in formatives %}
+                <div id="assessments_list_item">
+                    <li>
+                        <a href="{{url_for('buildAssessment',
+                                            Teacher_ID=Teacher_ID,
+                                            NewIs0OldisID=row.Assessment_ID
+                                )}}" alt="Click to edit this assessment">{{row.Assessment_name}}</a>
+                    </li>
+
+                    <form action="{{url_for('delAss',Assessment_ID=row.Assessment_ID)}}">
+                        <input type="submit" value="DELETE THIS ASSESSMENT" />
+                    </form>
+                </div>
+            {% endfor %}
+        </ul>
+
+    <h2>Summative Assessments</h2>
+        <ul id=assessments_list>
+            {% for row in summatives %}
+                <div id="assessments_list_item">
+                    <li>
+                        <a href="{{url_for('buildAssessment',
+                                                Teacher_ID=Teacher_ID,
+                                                NewIs0OldisID=row.Assessment_ID
+                                    )}}" alt="Click to edit this assessment">{{row.Assessment_name}}</a>
+                    </li>
+                </div>
+            {% endfor %}
+        </ul>
+{% endblock %}
+
+{% block right %}
+    <form action="{{url_for('buildAssessment',Teacher_ID=Teacher_ID,NewIs0OldisID=0)}}">
+        <input type="submit" value="+" />
+    </form>
+{% endblock %}
