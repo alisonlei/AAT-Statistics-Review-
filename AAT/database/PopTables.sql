@@ -29,7 +29,7 @@ VALUES
         'What is the name for a 3D circle?',
         'Sphere',
         'A sphere is the 3D version of a circle - it looks like a ball!',
-        'Ball',
+        'Rounder',
         'Circle',
         'Cylinder'
     ),
@@ -86,7 +86,7 @@ VALUES
         1,
         1,
         'Shapes',
-        'What is the different between a square and a cube?',
+        'What is the difference between a square and a cube?',
         'One is 3D',
         'A cube is the 3D version of a square - all of it`s sides are of equal size.',
         'One is blue',
