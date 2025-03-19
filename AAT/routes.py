@@ -1,6 +1,8 @@
+import sqlite3
+import os
 from AAT import app, db, Base, session, Session
 from AAT.models import *
-from flask import Flask, render_template, url_for, jsonify, request, redirect, session
+from flask import Flask, render_template, url_for, jsonify, request, redirect, session, g
 
 # from StatisticsReviewer import app, db
 # from StatisticsReviewer.models import *
@@ -444,3 +446,99 @@ def sitSumAssessment(Assessment_ID):
     return render_template('#')
 
 ### END OF STUDENT PAGES ###
+
+
+
+
+
+### COMMENTS CODE ###
+DATABASE = 'comments.db'
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE)
+        db.row_factory = sqlite3.Row  # enables access to rows
+    return db
+
+def init_db():
+    # Create the database file and table if it does not exist
+    if not os.path.exists(DATABASE):
+        with sqlite3.connect(DATABASE) as conn:
+            cursor = conn.cursor()
+            cursor.execute('''
+                CREATE TABLE comments (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    question_id INTEGER NOT NULL,
+                    parent_id INTEGER,
+                    name TEXT NOT NULL,
+                    text TEXT NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            conn.commit()
+
+app = Flask(__name__)
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
+# Put any questions you want to show, question/exercise number/id, and question text, replace the below code if you are able to link it all together
+@app.route('/')
+def assessment():
+    questions = [
+        {'id': 1, 'text': 'What is 2 + 2?'},
+        {'id': 2, 'text': 'Explain the theory of relativity.'}
+    ]
+    return render_template('assessment.html', questions=questions)
+
+@app.route('/comments')
+def comments():
+    # Render the external comment page for a given question
+    question_id = request.args.get('question_id')
+    return render_template('comments.html', question_id=question_id)
+
+@app.route('/api/comments', methods=['GET'])
+def get_comments():
+    question_id = request.args.get('question_id')
+    if not question_id:
+        return jsonify({'error': 'Missing question_id'}), 400
+    db = get_db()
+    cur = db.execute("SELECT * FROM comments WHERE question_id = ? ORDER BY created_at ASC", (question_id,))
+    rows = cur.fetchall()
+    comments = [dict(row) for row in rows]
+    # Build a nested structure (top-level comments with replies)
+    comments_by_id = {}
+    for comment in comments:
+        comment['replies'] = []
+        comments_by_id[comment['id']] = comment
+    nested = []
+    for comment in comments:
+        if comment['parent_id']:
+            parent = comments_by_id.get(comment['parent_id'])
+            if parent:
+                parent['replies'].append(comment)
+        else:
+            nested.append(comment)
+    return jsonify(nested)
+
+@app.route('/api/comments', methods=['POST'])
+def add_comment():
+    question_id = request.form.get('question_id')
+    name = request.form.get('name')
+    text = request.form.get('comment')
+    parent_id = request.form.get('parent_id') or None
+    if not question_id or not name or not text:
+        return jsonify({'error': 'Missing parameters'}), 400
+    db = get_db()
+    cur = db.execute("INSERT INTO comments (question_id, parent_id, name, text) VALUES (?, ?, ?, ?)",
+                     (question_id, parent_id, name, text))
+    db.commit()
+    return jsonify({'success': True, 'id': cur.lastrowid})
+
+if __name__ == '__main__':
+    init_db()
+    app.run(debug=True)
+### END OF COMMENTS CODE ###

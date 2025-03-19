@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Comments for Question {{ question_id }}</title>
+</head>
+<body>
+  <h2>Comments for Question {{ question_id }}</h2>
+  
+  <!-- Main comment form -->
+  <form class="commentForm">
+    <input type="text" name="name" placeholder="Your name" required /><br>
+    <textarea name="comment" placeholder="Your comment" required></textarea><br>
+    <button type="submit">Add Comment</button>
+  </form>
+  
+  <!-- Container where comments will be rendered -->
+  <div class="commentsContainer"></div>
+  
+  <script>
+    // Use the question_id provided by Flask
+    const questionId = "{{ question_id }}";
+    
+    // Load comments from the API for the current question
+    async function loadComments() {
+      const response = await fetch(`/api/comments?question_id=${questionId}`);
+      const comments = await response.json();
+      renderComments(comments);
+    }
+    
+    // Render comments recursively into the container
+    function renderComments(comments) {
+      const container = document.querySelector('.commentsContainer');
+      container.innerHTML = '';
+      comments.forEach(comment => {
+        container.appendChild(createCommentElement(comment));
+      });
+    }
+    
+    // Create a DOM element for a comment or reply
+    function createCommentElement(comment) {
+      const commentDiv = document.createElement('div');
+      commentDiv.className = 'comment';
+      commentDiv.dataset.id = comment.id;
+      
+      const header = document.createElement('h4');
+      header.textContent = comment.name;
+      commentDiv.appendChild(header);
+      
+      const text = document.createElement('p');
+      text.textContent = comment.text;
+      commentDiv.appendChild(text);
+      
+      // Reply button to show a reply form
+      const replyBtn = document.createElement('button');
+      replyBtn.textContent = 'Reply';
+      replyBtn.onclick = () => {
+        if (commentDiv.querySelector('.reply-form')) return;
+        showReplyForm(commentDiv, comment.id);
+      };
+      commentDiv.appendChild(replyBtn);
+      
+      // Container for nested replies
+      const repliesContainer = document.createElement('div');
+      repliesContainer.className = 'replies';
+      if (comment.replies && comment.replies.length > 0) {
+        comment.replies.forEach(reply => {
+          repliesContainer.appendChild(createCommentElement(reply));
+        });
+      }
+      commentDiv.appendChild(repliesContainer);
+      
+      return commentDiv;
+    }
+    
+    // Show a reply form below a comment
+    function showReplyForm(parentDiv, parentId) {
+      const replyForm = document.createElement('form');
+      replyForm.className = 'reply-form';
+      
+      const nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.placeholder = 'Your name';
+      nameInput.required = true;
+      replyForm.appendChild(nameInput);
+      replyForm.appendChild(document.createElement('br'));
+      
+      const commentInput = document.createElement('textarea');
+      commentInput.placeholder = 'Your reply';
+      commentInput.required = true;
+      replyForm.appendChild(commentInput);
+      replyForm.appendChild(document.createElement('br'));
+      
+      const submitButton = document.createElement('button');
+      submitButton.type = 'submit';
+      submitButton.textContent = 'Submit Reply';
+      replyForm.appendChild(submitButton);
+      
+      replyForm.onsubmit = async function(e) {
+        e.preventDefault();
+        const replyName = nameInput.value;
+        const replyText = commentInput.value;
+        if (replyName && replyText) {
+          const formData = new FormData();
+          formData.append('question_id', questionId);
+          formData.append('name', replyName);
+          formData.append('comment', replyText);
+          formData.append('parent_id', parentId);
+          const response = await fetch('/api/comments', {
+            method: 'POST',
+            body: formData
+          });
+          const result = await response.json();
+          if (result.success) {
+            loadComments();
+          } else {
+            alert('Error adding reply');
+          }
+        }
+      };
+      
+      parentDiv.appendChild(replyForm);
+    }
+    
+    // Handle main comment form submission
+    document.querySelector('form.commentForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      formData.append('question_id', questionId);
+      formData.append('parent_id', '');
+      const response = await fetch('/api/comments', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
+      if (result.success) {
+        loadComments();
+        e.target.reset();
+      } else {
+        alert('Error adding comment');
+      }
+    };
+    
+    window.onload = loadComments;
+  </script>
+</body>
+</html>
