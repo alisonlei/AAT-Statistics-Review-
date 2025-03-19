@@ -3,8 +3,9 @@
 {% block left %}
     <h1>TEACHER {{Teacher_ID}}'S ASSESSMENTS</h1>
     
-    <h2>Formative Assessments</h2>
-        <div>Click on an assessment to take it. You may retake formative assessments as many times as you'd like.</div>
+    <div class="asmtTypeViewBlock">
+        <h2>Formative Assessments</h2>
+        <i>Click on an assessment to take it. You may retake formative assessments as many times as you'd like.</i>
         <ul id=assessments_list>
             {% for row in formatives %}
                 <div id="assessments_list_item">
@@ -16,9 +17,11 @@
                 </div>
             {% endfor %}
         </ul>
+    </div>
 
-    <h2>Summative Assessments</h2>
-        <div>Click on an assessment to take it. You may only take a summative assessment once.</div>
+    <div class="asmtTypeViewBlock">
+        <h2>Summative Assessments</h2>
+        <i>Click on an assessment to take it. You may only take a summative assessment once.</i>
         <ul id=assessments_list>
             {% for row in summatives %}
                 <div id="assessments_list_item">
@@ -30,5 +33,6 @@
                 </div>
             {% endfor %}
         </ul>
+    </div>
 
 {% endblock %}

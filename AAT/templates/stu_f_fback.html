@@ -2,25 +2,23 @@
 
 {% block left %}
     <h1>MY RESULTS FOR <i>{{assessment.Assessment_name}}</i></h1>
+    <i>If you would like to see what others are saying about an exercise, click the 'Comments' button.</i>
 
-    <div id="feedbackContainer">
+    <div class="exerciseContainer">
         <h2>1) {{exercises[0].Question}}</h2>
-        <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
-        </div>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt1.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[0].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt1.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt1.inputtedAnswer}}
+            <b>{% if pt1.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt1.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[0].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt1.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[0].How_corr_answ_was_reached}} <br>
@@ -29,26 +27,29 @@
                 Well done!
             {% endif %}
         </div>
+        <div id="commentsButton">
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
+        </div>
     </div>
 
-    <div id="feedbackContainer">
+    <div class="exerciseContainer">
         <h2>2) {{exercises[1].Question}}</h2>
-        <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
-        </div>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt2.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[1].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt2.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt2.inputtedAnswer}}
+            <b>{% if pt2.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt2.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[1].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt2.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[1].How_corr_answ_was_reached}} <br>
@@ -57,25 +58,28 @@
                 Well done!
             {% endif %}
         </div>
-    </div>
-    <div id="feedbackContainer">
-        <h2>3) {{exercises[2].Question}}</h2>
         <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
         </div>
+    </div>
+    <div class="exerciseContainer">
+        <h2>3) {{exercises[2].Question}}</h2>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt3.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[2].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt3.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt3.inputtedAnswer}}
+            <b>{% if pt3.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt3.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[2].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt3.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[2].How_corr_answ_was_reached}} <br>
@@ -84,25 +88,28 @@
                 Well done!
             {% endif %}
         </div>
-    </div>
-    <div id="feedbackContainer">
-        <h2>4) {{exercises[3].Question}}</h2>
         <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
         </div>
+    </div>
+    <div class="exerciseContainer">
+        <h2>4) {{exercises[3].Question}}</h2>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt4.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[3].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt4.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt4.inputtedAnswer}}
+            <b>{% if pt4.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt4.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[3].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt4.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[3].How_corr_answ_was_reached}} <br>
@@ -111,25 +118,28 @@
                 Well done!
             {% endif %}
         </div>
-    </div>
-    <div id="feedbackContainer">
-        <h2>5) {{exercises[4].Question}}</h2>
         <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
         </div>
+    </div>
+    <div class="exerciseContainer">
+        <h2>5) {{exercises[4].Question}}</h2>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt5.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[4].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt5.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt5.inputtedAnswer}}
+            <b>{% if pt5.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt5.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[4].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt5.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[4].How_corr_answ_was_reached}} <br>
@@ -138,25 +148,28 @@
                 Well done!
             {% endif %}
         </div>
-    </div>
-    <div id="feedbackContainer">
-        <h2>6) {{exercises[5].Question}}</h2>
         <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
         </div>
+    </div>
+    <div class="exerciseContainer">
+        <h2>6) {{exercises[5].Question}}</h2>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt6.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[5].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt6.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt6.inputtedAnswer}}
+            <b>{% if pt6.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt6.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[5].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt6.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[5].How_corr_answ_was_reached}} <br>
@@ -165,25 +178,28 @@
                 Well done!
             {% endif %}
         </div>
-    </div>
-    <div id="feedbackContainer">
-        <h2>7) {{exercises[6].Question}}</h2>
         <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
         </div>
+    </div>
+    <div class="exerciseContainer">
+        <h2>7) {{exercises[6].Question}}</h2>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt7.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[6].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt7.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt7.inputtedAnswer}}
+            <b>{% if pt7.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt7.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[6].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt7.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[6].How_corr_answ_was_reached}} <br>
@@ -192,25 +208,28 @@
                 Well done!
             {% endif %}
         </div>
-    </div>
-    <div id="feedbackContainer">
-        <h2>8) {{exercises[7].Question}}</h2>
         <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
         </div>
+    </div>
+    <div class="exerciseContainer">
+        <h2>8) {{exercises[7].Question}}</h2>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt8.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[7].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt8.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt8.inputtedAnswer}}
+            <b>{% if pt8.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt8.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[7].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt8.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[7].How_corr_answ_was_reached}} <br>
@@ -219,25 +238,28 @@
                 Well done!
             {% endif %}
         </div>
-    </div>
-    <div id="feedbackContainer">
-        <h2>9) {{exercises[8].Question}}</h2>
         <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
         </div>
+    </div>
+    <div class="exerciseContainer">
+        <h2>9) {{exercises[8].Question}}</h2>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt9.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[8].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt9.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt9.inputtedAnswer}}
+            <b>{% if pt9.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt9.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[8].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt9.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[8].How_corr_answ_was_reached}} <br>
@@ -246,25 +268,28 @@
                 Well done!
             {% endif %}
         </div>
-    </div>
-    <div id="feedbackContainer">
-        <h2>10) {{exercises[9].Question}}</h2>
         <div id="commentsButton">
-            <button>What do people have to say about this question? [open in new tab]</button>
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
         </div>
+    </div>
+    <div class="exerciseContainer">
+        <h2>10) {{exercises[9].Question}}</h2>
         <div id="theirAnswer">
-            <b>Your answer: </b> {{pt10.inputtedAnswer}}
-        </div>
-        <div id="correctAnswer">
-            <b>Correct answer: </b> {{exercises[9].Correct_answer}}
-        </div>
-        <div id="marker">
-            {% if pt10.Set0forWrong1forRight == 0 %}
-                X
+            <b>YOUR ANSWER: </b> {{pt10.inputtedAnswer}}
+            <b>{% if pt10.Set0forWrong1forRight == 0 %}
+                ✗
             {% else %}
                 ✓
-            {% endif %}
+            {% endif %}</b>
         </div>
+        {% if pt10.Set0forWrong1forRight == 0 %}
+            <div id="correctAnswer">
+                <b>CORRECT ANSWER: </b> {{exercises[9].Correct_answer}}
+            </div>
+        {% endif %}
         <div id="feedback">
             {% if pt10.Set0forWrong1forRight == 0 %}
                 <b>WHY?</b> {{exercises[9].How_corr_answ_was_reached}} <br>
@@ -272,6 +297,12 @@
             {% else %}
                 Well done!
             {% endif %}
+        </div>
+        <div id="commentsButton">
+            <form action=""> 
+                <input type="submit" value="COMMENTS" />
+            </form>
+            <!--url_for('chrisCommentsFunc',Assessment_ID=assessment.Assessment_ID)-->
         </div>
     </div>
     

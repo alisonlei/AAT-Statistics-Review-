@@ -1,11 +1,16 @@
 {% extends "layout_tch.html" %}
 
 {% block left %}
-    <h1>MY ASSESSMENTS</h1>
+    <h1>MY ASSESSMENTS
+        <form id="plusButton" action="{{url_for('buildAssessment',Teacher_ID=Teacher_ID,NewIs0OldisID=0)}}">
+            <input type="submit" value="+" />
+        </form>
+    </h1>
 
-    <div>Click on an assessment to see or change its details, or "+" to create a new assessment.</div>
+    <i>Click on an assessment to see or change its details, or on '+' to<br>create a new one.</i>
 
-    <h2>Formative Assessments</h2>
+    <div class="asmtTypeViewBlock">
+        <h2>Formative Assessments</h2>
         <ul id=assessments_list>
             {% for row in formatives %}
                 <div id="assessments_list_item">
@@ -14,16 +19,17 @@
                                             Teacher_ID=Teacher_ID,
                                             NewIs0OldisID=row.Assessment_ID
                                 )}}" alt="Click to edit this assessment">{{row.Assessment_name}}</a>
+                        <form id="delButton" action="{{url_for('delAss',Assessment_ID=row.Assessment_ID)}}">
+                            <input id="delButton" type="submit" value="DELETE" />
+                        </form>
                     </li>
-
-                    <form action="{{url_for('delAss',Assessment_ID=row.Assessment_ID)}}">
-                        <input type="submit" value="DELETE THIS ASSESSMENT" />
-                    </form>
                 </div>
             {% endfor %}
         </ul>
+    </div>
 
-    <h2>Summative Assessments</h2>
+    <div class="asmtTypeViewBlock">
+        <h2>Summative Assessments</h2>
         <ul id=assessments_list>
             {% for row in summatives %}
                 <div id="assessments_list_item">
@@ -36,10 +42,5 @@
                 </div>
             {% endfor %}
         </ul>
-{% endblock %}
-
-{% block right %}
-    <form action="{{url_for('buildAssessment',Teacher_ID=Teacher_ID,NewIs0OldisID=0)}}">
-        <input type="submit" value="+" />
-    </form>
+    </div>
 {% endblock %}
