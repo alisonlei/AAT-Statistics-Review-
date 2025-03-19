@@ -46,10 +46,23 @@
                         Make sure 'Side-by-side' and 'Interactive mode' are selected
                         Review the differences, and click either ‘Use their code’ or ‘Use our code' (Remember there may have been changes to the code since you last downloaded it)
                         At the bottom, click 'Commit to source branch'
-                If 'Resolve conflicts' button doesn't appear:
-                        Resolve the conflicts locally (e.g., through VS code)
-                        Clear the branch you made [I do this by deleting my branch through the GitLab repo's 'Branches' tab]
-                        Return to step 1
+                If 'Resolve conflicts' button doesn't appear, and it's telling you to resolve the conflicts locally:
+                        1. Go back to Git Bash [If you'd closed it, navigate into your folder again then use 'git switch your-branch-name' (e.g., git switch anya-branch) to move back into your branch]
+                        2. Run
+                                git fetch origin
+                                git fetch
+                                git rebase origin/master [If you the 'Could not apply'... message, just ignore it]
+                        5. Open the folder in VS code
+                        6. Look at the conflicting area/s of code. The affected files are marked with a dot or a '!'. The conflicting code is marked between <<<<< and >>>>>.
+                        7. Delete the code that no longer applies
+                        8. Delete the conflict markers (<<<, === and >>>)
+                        9. Save the changes
+                        10. In Git Bash, run:
+                                git add .
+                                git commit -m "Fix merge conflicts"
+                                git rebase --continue [If it says "Deletion of directory '.git/rebase-merge' failed. Should I try again? (y/n)", say 'n']
+                                git push origin your-branch-name --force-with-lease (e.g., git push origin anya-branch --force-with-lease)
+                        11. You should now be able to merge on the GitLab website as normal (see Step 10-11)
         Wait until it says 'Ready to merge!'
         Click 'Merge' [Don't worry if this button doesn't appear automatically, just go back to the 'Merge requests' tab and open the merge request again]
 
