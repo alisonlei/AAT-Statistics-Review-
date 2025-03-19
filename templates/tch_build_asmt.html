@@ -1,0 +1,234 @@
+{% extends "layout_tch.html" %}
+
+{% block left %}
+    <h1>ASSESSMENT BUILDER</h1>
+
+    <form id="assessmentBuilder" action="#" method="post">
+        
+        <label for="assessmentName"><h2>Name of Assessment:</h2></label>
+        <input type="text" id="assessmentName" name="assessmentName" value="{{nameFill}}" placeholder="Please enter the name of your assessment..." required>
+        
+        <br>
+        
+        <h2>You may include up to 10 exercises...</h2>
+
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise1" required>
+                <option value="{{ex1Fill.Exercise_ID}}" selected="selected">
+                    {{ex1Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise2">
+                <option value="{{ex2Fill.Exercise_ID}}" selected="selected">
+                    {{ex2Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise3">
+                <option value="{{ex3Fill.Exercise_ID}}" selected="selected">
+                    {{ex3Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise4">
+                <option value="{{ex4Fill.Exercise_ID}}" selected="selected">
+                    {{ex4Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise5">
+                <option value="{{ex4Fill.Exercise_ID}}" selected="selected">
+                    {{ex4Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise6">
+                <option value="{{ex6Fill.Exercise_ID}}" selected="selected">
+                    {{ex6Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+        
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise7">
+                <option value="{{ex7Fill.Exercise_ID}}" selected="selected">
+                    {{ex7Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise8">
+                <option value="{{ex8Fill.Exercise_ID}}" selected="selected">
+                    {{ex8Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise9">
+                <option value="{{ex9Fill.Exercise_ID}}" selected="selected">
+                    {{ex9Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <div id="exerciseSelectors">
+            <select id="exerciseSelector" name="exercise10">
+                <option value="{{ex10Fill.Exercise_ID}}" selected="selected">
+                    {{ex10Fill.Question}}
+                </option>
+                <optgroup label="MY MULTIPLE-CHOICE EXERCISES">
+                    {% for row in MCQs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="MY FILL-THE-BLANKS EXERCISES">
+                    {% for row in FTBs %}
+                        <option value="{{row.Exercise_ID}}">{{row.Question}}</option>
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <label for="typeOfAssessment">What type of assessment do you want this to be?</label>
+        <div id="typeOfAssessment">
+            <input type="radio" id="formative" name="typeOfAssessment" value="1" {% if typeFill==1 %}input checked="checked"{%endif%}>
+            <label for="formative">Formative assessment</label>
+            
+            <input type="radio" id="summative" name="typeOfAssessment" value="0" {% if typeFill==0 %}input checked="checked"{%endif%}>
+            <label for="summative">Summative assessment</label>
+        </div>
+
+        <input type="submit" value="SAVE TO 'MY ASSESSMENTS'">
+    </form>
+{% endblock %}
+
+
+
+
+{% block right %}
+    <div id="availablExercises">
+        <h2>MY MULTIPLE-CHOICE EXERCISES</h2>    
+            <ul id=exercises_list>
+                {% for row in MCQs %}
+                    <div id="exercises_list_item">
+                        <li>
+                            {{row.Question}}
+                            <i>{{row.Correct_answer}}</i>
+                        </li>
+                    </div>
+                {% endfor %}
+            </ul>
+        <h2>MY FILL-THE-BLANKS EXERCISES</h2> 
+            <ul id=exercises_list>
+                {% for row in FTBs %}
+                    <div id="exercises_list_item">
+                        {{row.Question}}
+                        <i>{{row.Correct_answer}}</i>
+                    </div>
+                {% endfor %}
+            </ul>
+    </div>
+{% endblock %}
