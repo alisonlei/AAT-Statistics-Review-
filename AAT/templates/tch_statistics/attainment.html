@@ -6,6 +6,10 @@
 {%block left%}
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
+<div class="stat_links">
+ <a href="{{url_for('fs')}}">Review Students' Engagement and Attempts</a><br>
+<a href="{{url_for('stat_home')}}">Return to Statistics Home</a>
+</div>
 <h1>Yearly Summative Assessment Scores</h1>
 <!-- Create a div where the graph will take place -->
 <div id="sum_res"></div>
@@ -30,6 +34,5 @@
 
 <script  src="{{url_for('static',filename='statistics_part/js/sa.js')}}"></script>
 <script  src="{{url_for('static',filename='statistics_part/js/indiv_sa.js')}}"></script>
-<a href="{{url_for('fs')}}">Review Students' Engagement and Attempts</a><br>
-<a href="{{url_for('stat_home')}}">Return to Statistics Home</a>
+
 {%endblock %}

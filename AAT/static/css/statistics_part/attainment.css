@@ -8,3 +8,26 @@
 h1{
     margin-bottom:1em;
 }
+/*stat page links*/
+.stat_links a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    line-height: normal;
+  }
+  .stat_links a:hover {
+    color: black;
+    font-weight: bold;
+    transition-duration: 0.3s;
+    text-decoration: none;
+  }
+  .stat_links a:active {
+    color: grey;
+    transition-duration: 0.3s;
+  }
+  
+  .stat_links{
+    margin-bottom:1em;
+    border-bottom: 3px solid;
+    padding-bottom:1em;
+  }

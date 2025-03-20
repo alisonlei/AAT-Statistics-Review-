@@ -1,4 +1,3 @@
-
 function setAttemptCDN(){
     console.log("running setCDN for Attempt table");
     
@@ -136,11 +135,19 @@ function setResponseCDN(){
     
 
     let body=document.body;
-   
+   //set up filter parameters
     const initializeTable=`    $(document).ready( function () {
-        $('#response_table').DataTable();
+        let table=$('#response_table').DataTable();
+        $(".topic").click(function() {
+            table.column(2).search($(this).text()).draw();
+        });
+        $(".all_topics").click(function() {
+            table.column(2).search('').draw();
+        });
+    });
+
        
-    } );
+   
     `
     jq_code.textContent=initializeTable;
     body.appendChild(jq_code);
@@ -167,49 +174,12 @@ function setResponseCDN(){
 //             table.column(1).search(topic).draw();
 //         });
 //     });
-function initialize_topic_parameters(){
-    let topic_parameters=document.getElementsByClassName("topic");
-    let table=document.getElementById("response_table");
-    for(let p of topic_parameters){
-        p.addEventListener('click',function() {
-            // Filter the table
-            table.column(2).search(p.textContent).draw();
-        });
-    }
- 
-    // for (let p of topic_parameters){
-    //     p.addEventListener("click",function(){
-    //         let table_body=document.getElementById("response_body");
-    //         let table_rows=table_body.children;
-    //         let response_rows_count=table_rows.length;
-    //         for (let i=0;i<response_rows_count;i++){
-    //             if (table_rows[i].children[2].textContent!=p.textContent){
-    //                 table_rows[i].style.display='none';
-    //             }else{
-    //                 table_rows[i].style.display='table-row';
-    //             }
-    //         }
-    //     })
-    // }
-    let reset=document.getElementsByClassName("all_topics")[0];
-    reset.addEventListener("click",function(){
-        let table_body=document.getElementById("response_body");
-        let table_rows=table_body.children;
-        let response_rows_count=table_rows.length;
-        for (let i=0;i<response_rows_count;i++){
-            table_rows[i].style.display='table-row';
-       
-    }
-    })
-   
-}
+
 function setResponsesTable(res){//res is an array of js objects,each object is a row
     console.log("running setresponsetable");
     let table_body=document.getElementById("response_body");
     
-    //add event listener to topic parameters
-
-    initialize_topic_parameters();
+ 
     
     
 
