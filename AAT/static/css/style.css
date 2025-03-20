@@ -142,4 +142,12 @@
         position: relative;
         bottom: 8px;
     }
+    #totalMark{
+        padding: 6px 22px;
+        margin: 4px 2px;
+        border: 1px solid black;
+        width: 80%;
+        position: relative;
+        bottom: 2px;
+    }
 /* END OF ANYA RULES */

@@ -11,6 +11,9 @@
 
     <div class="asmtTypeViewBlock">
         <h2>Formative Assessments</h2>
+        {% if formSet0forEmpty1forFull==0 %}
+            <i>None saved</i>
+        {% endif %}
         <ul id=assessments_list>
             {% for row in formatives %}
                 <div id="assessments_list_item">

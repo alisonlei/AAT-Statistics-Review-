@@ -38,10 +38,15 @@ def tchSeeAssessments(Teacher_ID):
     # ACCESS ASSESSMENTS SAVED IN DB
     formatives = AssessmentDAO.allFormAssessments(db)
     summatives = AssessmentDAO.allSumAssessments(db)
+    # TO ACKNOWLEDGE WHEN NO FORMATIVE ASSESSMENTS SAVED
+    formSet0forEmpty1forFull = 0
+    if formatives:
+        formSet0forEmpty1forFull = 1
     return render_template('tch_see_asmts.html',
                             formatives=formatives,
                             summatives=summatives,
-                            Teacher_ID=Teacher_ID)
+                            Teacher_ID=Teacher_ID,
+                            formSet0forEmpty1forFull=formSet0forEmpty1forFull)
 
 @app.route("/assessmentbuilder<NewIs0OldisID>/<Teacher_ID>", methods=["GET", "POST"])
 def buildAssessment(Teacher_ID,NewIs0OldisID):
@@ -386,6 +391,7 @@ def formMark(Assessment_ID,Student_ID):
     for exerciseID in exerciseIDs:
         exercise = ExerciseDAO.ExerciseById(exerciseID,db)
         exercises.append(exercise)
+    
     # SOURCE ATTEMPT INFO...
     pt1 = AttemptDAO.AttemptById(1, db)
     pt2 = AttemptDAO.AttemptById(2, db)
@@ -397,11 +403,37 @@ def formMark(Assessment_ID,Student_ID):
     pt8 = AttemptDAO.AttemptById(8, db)
     pt9 = AttemptDAO.AttemptById(9, db)
     pt10 = AttemptDAO.AttemptById(10, db)
+
+    # CALCULATE TOTAL MARK
+    totalMark = 0
+    if pt1.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt2.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt3.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt4.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt5.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt6.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt7.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt8.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt9.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt10.Set0forWrong1forRight==1:
+        totalMark+=1
+    totalPerc=totalMark*10
+
     return render_template('stu_f_marks.html',
                         assessment=assessment, 
                         exercises=exercises,
                         pt1=pt1, pt2=pt2, pt3=pt3, pt4=pt4, pt5=pt5,
-                        pt6=pt6, pt7=pt7, pt8=pt8, pt9=pt9, pt10=pt10)
+                        pt6=pt6, pt7=pt7, pt8=pt8, pt9=pt9, pt10=pt10,
+                        totalPerc=totalPerc)
 
 @app.route("/formative_feedback_<Assessment_ID>/<Student_ID>")
 def formFeedback(Assessment_ID,Student_ID):
@@ -435,16 +467,41 @@ def formFeedback(Assessment_ID,Student_ID):
     pt8 = (AttemptDAO.AttemptById(8, db))
     pt9 = (AttemptDAO.AttemptById(9, db))
     pt10 = (AttemptDAO.AttemptById(10, db))
+
+    # CALCULATE TOTAL MARK
+    totalMark = 0
+    if pt1.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt2.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt3.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt4.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt5.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt6.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt7.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt8.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt9.Set0forWrong1forRight==1:
+        totalMark+=1
+    if pt10.Set0forWrong1forRight==1:
+        totalMark+=1
+    totalPerc=totalMark*10
+
     return render_template('stu_f_fback.html',
                         assessment=assessment, 
                         exercises=exercises,
                         pt1=pt1, pt2=pt2, pt3=pt3, pt4=pt4, pt5=pt5,
-                        pt6=pt6, pt7=pt7, pt8=pt8, pt9=pt9, pt10=pt10)
+                        pt6=pt6, pt7=pt7, pt8=pt8, pt9=pt9, pt10=pt10,
+                        totalPerc=totalPerc)
 
 @app.route("/sum_assessment/<Assessment_ID>")
 def sitSumAssessment(Assessment_ID):
     return render_template('#')
-
 ### END OF STUDENT PAGES ###
 
 

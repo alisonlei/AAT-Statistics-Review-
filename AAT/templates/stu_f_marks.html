@@ -1,7 +1,7 @@
 {% extends "layout_stu.html" %}
 
 {% block left %}
-    <h1>MY ANSWERS TO <i>{{assessment.Assessment_name}}</i></h1>
+    <h1>MY RESULTS FOR <i>{{assessment.Assessment_name}}</i></h1>
 
     <div class="exerciseContainer">
         <h2>1) {{exercises[0].Question}}</h2>
@@ -129,3 +129,6 @@
 
 {% endblock %}
 
+{% block right %}
+    <h2 id="totalMark"><i>TOTAL MARK: {{totalPerc}}%</i></h2>
+{% endblock %}
