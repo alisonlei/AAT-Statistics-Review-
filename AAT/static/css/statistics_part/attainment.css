@@ -1,0 +1,10 @@
+.leftContainer{
+    width:100%;
+}
+#sum_res{
+    padding-bottom: 5em;
+    border-bottom:3px solid;
+}
+h1{
+    margin-bottom:1em;
+}
