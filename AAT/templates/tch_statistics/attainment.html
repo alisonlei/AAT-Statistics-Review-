@@ -1,8 +1,9 @@
+{%extends 'layout_tch.html'%}
 {%block head%}
 <link type="stylesheet" href="{{url_for('static',filename='css/statistics_part/attainment.css')}}">
 <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
 {%endblock%}
-{%block content%}
+{%block left%}
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 <h1>Yearly Summative Assessment Scores</h1>
@@ -15,8 +16,8 @@
         <tr>
             <th>Student ID</th>
             <th>Intake Year</th>
-            <th>Assessment 1 name</th><!--get from jinja rendering-->
-            <th>Assessment 2 name</th>
+            <th>KS3 Mathematics: Term 1</th><!--get from jinja rendering-->
+            <th>KS3 Mathematics: Term 2</th>
         
         </tr>
     </thead>
@@ -31,4 +32,4 @@
 <script  src="{{url_for('static',filename='statistics_part/js/indiv_sa.js')}}"></script>
 <a href="{{url_for('fs')}}">Review Students' Engagement and Attempts</a><br>
 <a href="{{url_for('stat_home')}}">Return to Statistics Home</a>
-{%endblock content%}
+{%endblock %}

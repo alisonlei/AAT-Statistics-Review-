@@ -196,8 +196,9 @@ def attainment():
 def fs():
     assessment_names=getParameters("StatisticsReviewer/testdatabase.db","Assessment","Assessment_name")
     print(assessment_names)
+    fs_name=getParameters("StatisticsReviewer/testdatabase.db","Attempts","assessment_name")
     topics=getParameters("StatisticsReviewer/testdatabase.db","Response","topic")
-    return render_template('tch_statistics/fsStatistics.html',assessment_lt=assessment_names,topic_lt=topics)
+    return render_template('tch_statistics/fsStatistics.html',fs_lt=fs_name,assessment_lt=assessment_names,topic_lt=topics)
 ### END OF TEACHER PAGES ###
 
 

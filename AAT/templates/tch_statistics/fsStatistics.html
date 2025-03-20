@@ -1,12 +1,19 @@
 {%extends "layout_tch.html"%}
 
 {%block head %}
+
 <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
 
 <link rel="stylesheet" href="{{url_for('static',filename='css/statistics_part/fsStatistics.css')}}" />
 {% endblock%}
 
+
+
 {%block left%}
+<div class="stat_links">
+    <a href="{{url_for('attainment')}}">Review Students' Attainment</a><br>
+    <a href="{{url_for('stat_home')}}">Return to Statistics Home</a>
+</div>
 <!--get the resource onload-->
 <div class="table_with_parameters">
     <div class="dropdown">
@@ -33,13 +40,13 @@
         <tbody id="response_body"></tbody>
     </table>
 </div>
-<button id="simulate submission">test submission</button>
+
 
 <div class="table_with_parameters">
     <div class="dropdown">
         <button class="dropbtn">Assessments</button>
         <ul class="dropdown-content">
-            {% for fa in assessment_lt %}
+            {% for fa in fs_lt %}
             <li class="parameter" >{{fa}}</li>
             {% endfor %}
             
@@ -69,6 +76,5 @@
 
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js" ></script><!--import jquery via CDN,online -->   
 
-<a href="{{url_for('attainment')}}">Review Students' Attainment</a><br>
-<a href="{{url_for('stat_home')}}">Return to Statistics Home</a>
-{%endblock %}
+
+{%endblock%}

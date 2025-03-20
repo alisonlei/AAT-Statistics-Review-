@@ -126,7 +126,7 @@ def queryDb(database_path,table_name,sql):
 
 def getParameters(database_path, table_name,col_name)->list:
     """Counts the number of rows in a SQLite3 table."""
-    res=queryDb(database_path,table_name,f"SELECT  {col_name}  FROM {table_name}")
+    res=queryDb(database_path,table_name,f"SELECT DISTINCT {col_name}  FROM {table_name}")
     formatted_result = [parameter[0] for parameter in res]
     print("after formating")
     print(formatted_result)
