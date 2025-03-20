@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Assessment</title>
+</head>
+<body>
+  <h2>Assessment Questions</h2>
+  {% for question in questions %}
+    <div class="question">
+      <h3>Question {{ question.id }}: {{ question.text }}</h3>
+      <a class="comment-link" href="/comments?question_id={{ question.id }}">View Comments</a>
+    </div>
+  {% endfor %}
+</body>
+</html>

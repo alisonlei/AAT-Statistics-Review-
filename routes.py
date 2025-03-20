@@ -1,8 +1,6 @@
-import sqlite3
-import os
 from AAT import app, db, Base, session, Session
 from AAT.models import *
-from flask import Flask, render_template, url_for, jsonify, request, redirect, session, g
+from flask import Flask, render_template, url_for, jsonify, request, redirect, session
 
 # from StatisticsReviewer import app, db
 # from StatisticsReviewer.models import *
@@ -38,15 +36,10 @@ def tchSeeAssessments(Teacher_ID):
     # ACCESS ASSESSMENTS SAVED IN DB
     formatives = AssessmentDAO.allFormAssessments(db)
     summatives = AssessmentDAO.allSumAssessments(db)
-    # TO ACKNOWLEDGE WHEN NO FORMATIVE ASSESSMENTS SAVED
-    formSet0forEmpty1forFull = 0
-    if formatives:
-        formSet0forEmpty1forFull = 1
     return render_template('tch_see_asmts.html',
                             formatives=formatives,
                             summatives=summatives,
-                            Teacher_ID=Teacher_ID,
-                            formSet0forEmpty1forFull=formSet0forEmpty1forFull)
+                            Teacher_ID=Teacher_ID)
 
 @app.route("/assessmentbuilder<NewIs0OldisID>/<Teacher_ID>", methods=["GET", "POST"])
 def buildAssessment(Teacher_ID,NewIs0OldisID):
@@ -203,9 +196,8 @@ def attainment():
 def fs():
     assessment_names=getParameters("StatisticsReviewer/testdatabase.db","Assessment","Assessment_name")
     print(assessment_names)
-    fs_name=getParameters("StatisticsReviewer/testdatabase.db","Attempts","assessment_name")
     topics=getParameters("StatisticsReviewer/testdatabase.db","Response","topic")
-    return render_template('tch_statistics/fsStatistics.html',fs_lt=fs_name,assessment_lt=assessment_names,topic_lt=topics)
+    return render_template('tch_statistics/fsStatistics.html',assessment_lt=assessment_names,topic_lt=topics)
 ### END OF TEACHER PAGES ###
 
 
@@ -392,7 +384,6 @@ def formMark(Assessment_ID,Student_ID):
     for exerciseID in exerciseIDs:
         exercise = ExerciseDAO.ExerciseById(exerciseID,db)
         exercises.append(exercise)
-    
     # SOURCE ATTEMPT INFO...
     pt1 = AttemptDAO.AttemptById(1, db)
     pt2 = AttemptDAO.AttemptById(2, db)
@@ -404,37 +395,11 @@ def formMark(Assessment_ID,Student_ID):
     pt8 = AttemptDAO.AttemptById(8, db)
     pt9 = AttemptDAO.AttemptById(9, db)
     pt10 = AttemptDAO.AttemptById(10, db)
-
-    # CALCULATE TOTAL MARK
-    totalMark = 0
-    if pt1.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt2.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt3.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt4.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt5.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt6.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt7.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt8.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt9.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt10.Set0forWrong1forRight==1:
-        totalMark+=1
-    totalPerc=totalMark*10
-
     return render_template('stu_f_marks.html',
                         assessment=assessment, 
                         exercises=exercises,
                         pt1=pt1, pt2=pt2, pt3=pt3, pt4=pt4, pt5=pt5,
-                        pt6=pt6, pt7=pt7, pt8=pt8, pt9=pt9, pt10=pt10,
-                        totalPerc=totalPerc)
+                        pt6=pt6, pt7=pt7, pt8=pt8, pt9=pt9, pt10=pt10)
 
 @app.route("/formative_feedback_<Assessment_ID>/<Student_ID>")
 def formFeedback(Assessment_ID,Student_ID):
@@ -468,135 +433,35 @@ def formFeedback(Assessment_ID,Student_ID):
     pt8 = (AttemptDAO.AttemptById(8, db))
     pt9 = (AttemptDAO.AttemptById(9, db))
     pt10 = (AttemptDAO.AttemptById(10, db))
-
-    # CALCULATE TOTAL MARK
-    totalMark = 0
-    if pt1.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt2.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt3.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt4.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt5.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt6.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt7.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt8.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt9.Set0forWrong1forRight==1:
-        totalMark+=1
-    if pt10.Set0forWrong1forRight==1:
-        totalMark+=1
-    totalPerc=totalMark*10
-
     return render_template('stu_f_fback.html',
                         assessment=assessment, 
                         exercises=exercises,
                         pt1=pt1, pt2=pt2, pt3=pt3, pt4=pt4, pt5=pt5,
-                        pt6=pt6, pt7=pt7, pt8=pt8, pt9=pt9, pt10=pt10,
-                        totalPerc=totalPerc)
+                        pt6=pt6, pt7=pt7, pt8=pt8, pt9=pt9, pt10=pt10)
 
 @app.route("/sum_assessment/<Assessment_ID>")
 def sitSumAssessment(Assessment_ID):
-    return render_template('#')
-### END OF STUDENT PAGES ###
-
-
-
-
-
-### COMMENTS CODE ###
-DATABASE = 'comments.db'
-
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-        db.row_factory = sqlite3.Row  # enables access to rows
-    return db
-
-def init_db():
-    # Create the database file and table if it does not exist
-    if not os.path.exists(DATABASE):
-        with sqlite3.connect(DATABASE) as conn:
-            cursor = conn.cursor()
-            cursor.execute('''
-                CREATE TABLE comments (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    question_id INTEGER NOT NULL,
-                    parent_id INTEGER,
-                    name TEXT NOT NULL,
-                    text TEXT NOT NULL,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            ''')
-            conn.commit()
-
-app = Flask(__name__)
-
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
-# Put any questions you want to show, question/exercise number/id, and question text, replace the below code if you are able to link it all together
-@app.route('/')
-def assessment():
-    questions = [
-        {'id': 1, 'text': 'What is 2 + 2?'},
-        {'id': 2, 'text': 'Explain the theory of relativity.'}
+    assessment = AssessmentDAO.AssessmentById(Assessment_ID, db)
+   
+    exerciseIDs = [
+        assessment.ExID_1,
+        assessment.ExID_2,
+        assessment.ExID_3,
+        assessment.ExID_4,
+        assessment.ExID_5,
+        assessment.ExID_6,
+        assessment.ExID_7,
+        assessment.ExID_8,
+        assessment.ExID_9,
+        assessment.ExID_10,
     ]
-    return render_template('assessment.html', questions=questions)
+   
+    exercises = []
+   
+    for index, exerciseID in enumerate(exerciseIDs):
+        exercise = ExerciseDAO.ExerciseById(exerciseID, db)
+        exercises.append(exercise)
+   
+    return render_template('stu_sit_s_asmt.html', assessment=assessment, exercises=exercises)
 
-@app.route('/comments')
-def comments():
-    # Render the external comment page for a given question
-    question_id = request.args.get('question_id')
-    return render_template('comments.html', question_id=question_id)
-
-@app.route('/api/comments', methods=['GET'])
-def get_comments():
-    question_id = request.args.get('question_id')
-    if not question_id:
-        return jsonify({'error': 'Missing question_id'}), 400
-    db = get_db()
-    cur = db.execute("SELECT * FROM comments WHERE question_id = ? ORDER BY created_at ASC", (question_id,))
-    rows = cur.fetchall()
-    comments = [dict(row) for row in rows]
-    # Build a nested structure (top-level comments with replies)
-    comments_by_id = {}
-    for comment in comments:
-        comment['replies'] = []
-        comments_by_id[comment['id']] = comment
-    nested = []
-    for comment in comments:
-        if comment['parent_id']:
-            parent = comments_by_id.get(comment['parent_id'])
-            if parent:
-                parent['replies'].append(comment)
-        else:
-            nested.append(comment)
-    return jsonify(nested)
-
-@app.route('/api/comments', methods=['POST'])
-def add_comment():
-    question_id = request.form.get('question_id')
-    name = request.form.get('name')
-    text = request.form.get('comment')
-    parent_id = request.form.get('parent_id') or None
-    if not question_id or not name or not text:
-        return jsonify({'error': 'Missing parameters'}), 400
-    db = get_db()
-    cur = db.execute("INSERT INTO comments (question_id, parent_id, name, text) VALUES (?, ?, ?, ?)",
-                     (question_id, parent_id, name, text))
-    db.commit()
-    return jsonify({'success': True, 'id': cur.lastrowid})
-
-if __name__ == '__main__':
-    init_db()
-    app.run(debug=True)
-### END OF COMMENTS CODE ###
+### END OF STUDENT PAGES ###

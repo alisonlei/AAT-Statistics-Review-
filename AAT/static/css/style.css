@@ -13,6 +13,39 @@
     #pageContent p{
         text-indent: 4%;
     }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+    a:active {
+        text-decoration: none;
+        color: black;
+    }
+    button, input[type=button], input[type=submit], input[type=reset] {
+        padding: 6px 22px;
+        margin: 4px 2px;
+        cursor: pointer;
+        background-color: rgb(232, 232, 232);
+        border: 1px solid black;
+    }
+    button:hover, input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover{
+        background-color: rgb(216, 216, 216);
+    }
+    input[type="radio"]{
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        border: 1.5px solid black;
+        border-radius: 100%;
+        width: 1em;
+        height: 1em;
+    }
+    input[type="radio"]:checked {
+        background: black;
+    }
 /* END OF GENERAL RULES */
 
 
@@ -82,3 +115,39 @@
         transition-duration: 0.3s;
     }
 /* END OF NAVBAR RULES */
+
+
+
+/* ANYA RULES */
+    .asmtTypeViewBlock{
+        margin: 40px 0px;
+    }
+    .exerciseContainer{
+        margin: 40px 0px;
+    }
+    .builderSection{
+        margin: 40px 0px;
+    }
+    #assessments_list{
+        list-style-position: inside;
+    }
+    #delButton{
+        float: right;
+        padding: 0px 14px;
+        margin: 0px;
+    }
+    #plusButton{
+        float: right;
+        padding: 0px 14px;
+        position: relative;
+        bottom: 8px;
+    }
+    #totalMark{
+        padding: 6px 22px;
+        margin: 4px 2px;
+        border: 1px solid black;
+        width: 80%;
+        position: relative;
+        bottom: 2px;
+    }
+/* END OF ANYA RULES */

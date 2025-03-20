@@ -1,0 +1,42 @@
+{% extends "layout_stu.html" %}
+
+{% block left %}
+
+<em><h1>{{assessment.Assessment_name}}</h1></em>
+
+    <div exercise_list>
+            {% for exercise in exercises %}
+                {% if exercise.Set0forFTB_1forMCQ == 0 %}
+                        <div class = "exercise_list_item">
+                                <div id=" FTB questions">
+                                    <strong> {{exercise.Question}} </strong>
+                                </div> 
+                                    <textarea name="FTB_ans" rows="1" cols="50"></textarea>
+                        </div>
+                    {% elif exercise.Set0forFTB_1forMCQ == 1 %}
+                    <div id="exercise_list_item">
+                            <div id=" MCQ questions">
+                               <strong> {{exercise.Question}} </strong>
+                            </div> 
+                            <label>
+                                <input type="radio" name="answer" value="{{exercise.Correct_answer}}">
+                                {{exercise.Correct_answer}}
+                            </label><br>
+                            <label>
+                                <input type="radio" name="answer" value="{{exercise.FalseOp1}}">
+                                {{exercise.FalseOp1}}
+                            </label><br>
+                            <label>
+                                <input type="radio" name="answer" value="{{exercise.FalseOp2}}">
+                                {{exercise.FalseOp2}}
+                            </label><br>
+                            <label>
+                                <input type="radio" name="answer" value="{{exercise.FalseOp3}}">
+                                {{exercise.FalseOp3}}
+                            </label>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div
+
+{% endblock %}
