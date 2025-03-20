@@ -1,7 +1,7 @@
 {% extends "layout_stu.html" %}
 
 {% block left %}
-    <h1>MY RESULTS FOR <i>{{assessment.Assessment_name}}</i></h1>
+    <h1>MY FEEDBACK FOR <i>{{assessment.Assessment_name}}</i></h1>
     <i>If you would like to see what others are saying about an exercise, click the 'Comments' button.</i>
 
     <div class="exerciseContainer">
@@ -309,5 +309,9 @@
     <form action="{{url_for('stuSeeAssessments',Teacher_ID=assessment.Teacher_ID)}}">
         <input type="submit" value="RETURN TO TEACHER {{assessment.Teacher_ID}}'S PAGE" />
     </form>
+{% endblock %}
 
+
+{% block right %}
+    <h2 id="totalMark"><i>TOTAL MARK: {{totalPerc}}%</i></h2>
 {% endblock %}
