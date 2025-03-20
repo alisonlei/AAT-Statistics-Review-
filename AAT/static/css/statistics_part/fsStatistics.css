@@ -5,6 +5,9 @@ body{
    
     margin: auto;
 }
+h1{
+  margin-bottom: 2em;
+}
 .table_with_parameters{
     display: grid;
     grid-template-columns: 1fr 4fr;

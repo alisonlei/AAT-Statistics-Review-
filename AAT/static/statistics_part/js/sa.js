@@ -131,7 +131,7 @@ svg
       .on("mousemove",function(d){
         tooltip
         .style("left", (d3.mouse(this)[0]+300) + "px")
-        .style("top", (d3.mouse(this)[1]+70) + "px")
+        .style("top", (d3.mouse(this)[1]+300) + "px")
         .style("z-index",1000)
         .html("<p>min:"+d.values.min+"<br>"+
                "lower quartile:"+d.values.q1+"<br>"+
